@@ -28,6 +28,9 @@ class SchoolsController < ApplicationController
 
     respond_to do |format|
       if @school.save
+        params[:item][:document_data].each do |file|
+       @school.documents.create!(:document => file)
+       end 
         format.html { redirect_to @school, notice: 'School was successfully created.' }
         format.json { render :show, status: :created, location: @school }
       else
@@ -69,6 +72,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name, :picture)
+      params.require(:school).permit(:name, :picture, :document_data => [])
     end
 end

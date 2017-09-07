@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907092454) do
+ActiveRecord::Schema.define(version: 20170907094236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20170907092454) do
   create_table "assignments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "school_id"
+    t.string "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_documents_on_school_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -64,5 +72,6 @@ ActiveRecord::Schema.define(version: 20170907092454) do
     t.string "picture"
   end
 
+  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
 end
