@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906084903) do
+ActiveRecord::Schema.define(version: 20170907094236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "teacher_id"
-    t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "school_id"
+    t.string "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_documents_on_school_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -29,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170906084903) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["student_id"], name: "index_parents_on_student_id"
   end
 
@@ -36,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170906084903) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "students", force: :cascade do |t|
@@ -47,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170906084903) do
     t.string "clubs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -57,11 +66,12 @@ ActiveRecord::Schema.define(version: 20170906084903) do
 
   create_table "teachers", force: :cascade do |t|
     t.string "name"
-    t.integer "subject_id"
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
+  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
 end
