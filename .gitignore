@@ -19,3 +19,4 @@
 .byebug_history
 virtualenv
 /env
+.DS_Store
