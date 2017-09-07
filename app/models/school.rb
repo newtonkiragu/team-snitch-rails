@@ -1,3 +1,3 @@
 class School < ApplicationRecord
-  mount_uploader :logo, LogoUploader
+  mount_uploader :picture, LogoUploader
 end
