@@ -42,7 +42,7 @@ class SchoolAttachmentsController < ApplicationController
   def update
     respond_to do |format|
       if @school_attachment.update(school_attachment_params)
-        format.html { redirect_to @school_attachment, notice: 'School attachment was successfully updated.' }
+        format.html { redirect_to @school_attachment.school, notice: 'School attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @school_attachment }
       else
         format.html { render :edit }
