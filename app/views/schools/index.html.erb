@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+
+  <% @schools.each do |school| %>
+    <h2><%= school.name %></h2>
+    <%= image_tag school.picture.thumb.url %>
+  <% end %>
+</div>
+
 <h1>Schools</h1>
 
 <table>
