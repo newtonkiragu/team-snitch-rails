@@ -15,6 +15,10 @@
     <%= form.label :name %>
     <%= form.text_field :name, id: :school_name %>
   </div>
+  <div class="">
+   School Logo:<%= form.file_field :picture %>
+   Fee Structure: <%= form.file_field :document %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

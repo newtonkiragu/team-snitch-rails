@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20170907094236) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.bigint "school_id"
-    t.string "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_documents_on_school_id"
-  end
-
   create_table "parents", force: :cascade do |t|
     t.bigint "student_id"
     t.string "name"
@@ -72,6 +64,5 @@ ActiveRecord::Schema.define(version: 20170907094236) do
     t.string "picture"
   end
 
-  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
 end

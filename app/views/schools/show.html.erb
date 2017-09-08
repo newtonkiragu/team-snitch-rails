@@ -3,6 +3,7 @@
 <p>
   <strong>Name:</strong>
   <%= @school.name %>
+  <%= image_tag @school.picture_url.to_s%>
 </p>
 
 <%= link_to 'Edit', edit_school_path(@school) %> |
