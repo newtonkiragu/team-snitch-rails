@@ -61,13 +61,22 @@ ActiveRecord::Schema.define(version: 20170907112346) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["student_id"], name: "index_parents_on_student_id"
+  end
+
+  create_table "school_attachments", force: :cascade do |t|
+    t.integer "school_id"
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "students", force: :cascade do |t|
@@ -79,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170907112346) do
     t.string "clubs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170907112346) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>School:</strong>
+  <%= @school_attachment.school_id %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @school_attachment.avatar %>
+</p>
+
+<%= link_to 'Edit', edit_school_attachment_path(@school_attachment) %> |
+<%= link_to 'Back', school_attachments_path %>

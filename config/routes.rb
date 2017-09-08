@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :mzazis
   devise_for :mwanafunzis
 root to: 'schools#index'
+  resources :school_attachments
   resources :students do
     resources :parents
   end
