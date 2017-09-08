@@ -1,0 +1,2 @@
+module SchoolAttachmentsHelper
+end

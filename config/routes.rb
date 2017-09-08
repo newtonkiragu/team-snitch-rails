@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :mzazis
+  devise_for :mwanafunzis
+root to: 'schools#index'
+  resources :school_attachments
   resources :students do
     resources :parents
   end

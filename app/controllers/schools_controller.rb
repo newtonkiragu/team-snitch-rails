@@ -10,11 +10,13 @@ class SchoolsController < ApplicationController
   # GET /schools/1
   # GET /schools/1.json
   def show
+    @school_attachments = @school.school_attachments.all
   end
 
   # GET /schools/new
   def new
     @school = School.new
+    @school_attachment = @school.school_attachments.build
   end
 
   # GET /schools/1/edit
@@ -28,9 +30,9 @@ class SchoolsController < ApplicationController
 
     respond_to do |format|
       if @school.save
-        params[:item][:document_data].each do |file|
-       @school.documents.create!(:document => file)
-       end 
+        params[:school_attachments]['avatar'].each do |a|
+          @school_attachment = @school.school_attachments.create!(:avatar => a,     :school_id => @school.id)
+       end
         format.html { redirect_to @school, notice: 'School was successfully created.' }
         format.json { render :show, status: :created, location: @school }
       else
@@ -72,6 +74,6 @@ class SchoolsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name, :picture, :document_data => [])
+      params.require(:school).permit(:name, :picture, school_attachments_attributes: [:id, :school_id, :avatar])
     end
 end

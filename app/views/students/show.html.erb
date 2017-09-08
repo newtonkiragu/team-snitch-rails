@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Picture:</strong>
+  <%= image_tag @student.picture_url.to_s%>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @student.name %>
 </p>
+
 
 <p>
   <strong>Level:</strong>
