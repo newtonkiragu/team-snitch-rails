@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :school_attachments
   resources :students do
     resources :parents
   end
