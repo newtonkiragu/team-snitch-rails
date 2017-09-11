@@ -19,8 +19,8 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.name %></td>
-        <td><%= student.level %></td>
-        <td><%= student.stream %></td>
+        <td><%= student.stream.level%></td>
+        <td><%= student.stream.stream%></td>
         <td><%= student.fee %></td>
         <td><%= student.dormitory %></td>
         <td><%= student.clubs %></td>
