@@ -3,12 +3,15 @@
 <div class="container">
 
   <% @schools.each do |school| %>
-    <h2><%= school.name %></h2>
-    <%= image_tag school.picture.thumb.url %>
+  <div class="head" style="text-align:center">
+
+    <img src=" <%= school.picture %>" alt="" style="height:300px;">
+    <h1 style="text-align:center;"><%= school.name %></h1>
+  </div>
   <% end %>
 </div>
 
-<h1>Schools</h1>
+<h1>My School</h1>
 
 <table>
   <thead>
