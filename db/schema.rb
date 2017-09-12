@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20170911204926) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.bigint "school_id"
-    t.string "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_documents_on_school_id"
-  end
-
   create_table "mwanafunzis", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -140,6 +132,5 @@ ActiveRecord::Schema.define(version: 20170911204926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
 end
