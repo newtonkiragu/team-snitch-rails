@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Subjects</h1>
+<div class="container">
+  <h1>Subjects</h1>
+  <% @subjects.each do |subject| %>
+  <button class="btn one"><h5><%= subject.name %></h5></button>
+  <% end %>
+
+<!-- <h1>Subjects</h1>
 
 <table>
   <thead>
@@ -20,8 +26,9 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
 
 <%= link_to 'New Subject', new_subject_path %>
+</div>
