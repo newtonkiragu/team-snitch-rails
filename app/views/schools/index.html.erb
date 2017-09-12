@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Schools</h1>
+<div class="container">
+
+  <% @schools.each do |school| %>
+  <div class="head" style="text-align:center">
+
+    <img src=" <%= school.picture %>" alt="" style="height:300px;">
+    <h1 style="text-align:center;"><%= school.name %></h1>
+  </div>
+  <% end %>
+</div>
+
+<h1>My School</h1>
 
 <table>
   <thead>

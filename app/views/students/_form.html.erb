@@ -20,17 +20,6 @@
     <%= form.label :name %>
     <%= form.text_field :name, id: :student_name, class: "form-control" %>
   </div>
-
-  <div class="field">
-    <%= form.label :level %>
-    <%= form.number_field :level, id: :student_level, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stream %>
-    <%= form.text_field :stream, id: :student_stream, class: "form-control" %>
-  </div>
-
   <div class="field">
     <%= form.label :fee %>
     <%= form.number_field :fee, id: :student_fee, class: "form-control" %>
@@ -43,7 +32,11 @@
 
   <div class="field">
     <%= form.label :clubs %>
-    <%= form.text_field :clubs, id: :student_clubs, class: "form-control" %>
+    <%= form.text_field :clubs, id: :student_clubs , class: "form-control"%>
+
+  <div class="field">
+    <%= form.label :stream %>
+    <%= collection_select(:student, :stream_id, Stream.all, :id, :name_with_state) %>
   </div>
 
   <div class="actions">
