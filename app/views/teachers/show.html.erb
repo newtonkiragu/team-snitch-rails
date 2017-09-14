@@ -9,6 +9,11 @@
   <strong>Role:</strong>
   <%= @teacher.role %>
 </p>
+  <p><% @teacher.subjects.each do |subject| %>
+    <%= subject.name%>
+    <% end %>
+  </p>
+
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
