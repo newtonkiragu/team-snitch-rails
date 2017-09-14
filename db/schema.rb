@@ -111,6 +111,13 @@ ActiveRecord::Schema.define(version: 20170912125141) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teacher_attachments", force: :cascade do |t|
+    t.integer "teacher_id"
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "name"
     t.string "role"

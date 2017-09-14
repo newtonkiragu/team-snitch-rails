@@ -11,6 +11,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1.json
   def show
     @teacher =  Teacher.find(params[:id])
+    @teacher_attachments = @teacher.teacher_attachments.all
 
   end
 
@@ -18,6 +19,7 @@ class TeachersController < ApplicationController
   def new
     @teacher = Teacher.new
     @subjects = Subject.all
+    @teacher_attachment = @teacher.teacher_attachments.build
   end
 
   # GET /teachers/1/edit
@@ -30,6 +32,9 @@ class TeachersController < ApplicationController
     @teacher = Teacher.new(teacher_params)
     respond_to do |format|
       if @teacher.save
+        params[:teacher_attachments]['avatar'].each do |a|
+         @teacher_attachment = @teacher.teacher_attachments.create!(:avatar => a)
+      end
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
@@ -77,6 +82,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name, :role, :picture)
+      params.require(:teacher).permit(:name, :role, :picture, teacher_attachments_attributes: [:id, :teacher_id, :avatar])
     end
 end
