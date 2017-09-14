@@ -32,5 +32,17 @@
       </div>
     <% end %>
 
+<<<<<<< HEAD
+=======
+  <% @subjects.each do |subject|%>
+  <%= form.label subject.name%>
+  <%= check_box_tag "subject_ids[]", subject.id, false,boy: subject.id , class: 'checkbox-inline'%>
+
+  <% end %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+>>>>>>> f5890d947d844a6808f5f4a8526d3e497ccdfc2f
   </div>
 </div>

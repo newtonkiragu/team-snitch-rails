@@ -10,11 +10,14 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    @teacher =  Teacher.find(params[:id])
+
   end
 
   # GET /teachers/new
   def new
     @teacher = Teacher.new
+    @subjects = Subject.all
   end
 
   # GET /teachers/1/edit
@@ -25,7 +28,6 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(teacher_params)
-
     respond_to do |format|
       if @teacher.save
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
@@ -35,6 +37,12 @@ class TeachersController < ApplicationController
         format.json { render json: @teacher.errors, status: :unprocessable_entity }
       end
     end
+    # SubjectTeacher.create(teacher_id: @teacher.id, subject_id: [1, 2])
+    me = params[:subject_ids]
+    @subject = Subject.find(me)
+
+      @teacher.update(subjects: @subject)
+
   end
 
   # PATCH/PUT /teachers/1
