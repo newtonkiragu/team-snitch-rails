@@ -21,6 +21,13 @@
     <%= form.text_field :role, id: :teacher_role %>
   </div>
 
+  <% @subjects.each do |subject|%>
+  <%= form.label subject.name%>
+  <%= check_box_tag "subject_ids[]", subject.id, false,boy: subject.id , class: 'checkbox-inline'%>
+
+  <% end %>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
