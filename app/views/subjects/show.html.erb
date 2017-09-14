@@ -4,6 +4,11 @@
   <strong>Name:</strong>
   <%= @subject.name %>
 </p>
+<p>
+  <strong>Students Names:</strong>
+  <%= @subject.students.map {|c| c.name}.join(', ') %>
+</p>
+
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>
