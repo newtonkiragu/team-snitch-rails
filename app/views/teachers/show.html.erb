@@ -13,6 +13,16 @@
   <strong>Role:</strong>
   <%= @teacher.role %>
 </p>
+  <p><% @teacher.subjects.each do |subject| %>
+    <%= subject.name%>
+    <% end %>
+  </p>
+
+
+<% @teacher_attachments.each do |p| %>
+  <%= image_tag p.avatar_url %>
+  <%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>
+<% end %>
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>

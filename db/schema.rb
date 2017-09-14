@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20170914091652) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.bigint "school_id"
-    t.string "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_documents_on_school_id"
-  end
-
   create_table "mwanafunzis", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -110,10 +102,24 @@ ActiveRecord::Schema.define(version: 20170914091652) do
     t.bigint "subject_id", null: false
     t.bigint "student_id", null: false
     t.index ["subject_id", "student_id"], name: "index_students_subjects_on_subject_id_and_student_id"
+
+  end
+  create_table "subject_teachers", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.bigint "teacher_id"
+    t.index ["subject_id"], name: "index_subject_teachers_on_subject_id"
+    t.index ["teacher_id"], name: "index_subject_teachers_on_teacher_id"
   end
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teacher_attachments", force: :cascade do |t|
+    t.integer "teacher_id"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -146,6 +152,7 @@ ActiveRecord::Schema.define(version: 20170914091652) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
+  add_foreign_key "subject_teachers", "subjects"
+  add_foreign_key "subject_teachers", "teachers"
 end

@@ -12,8 +12,9 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require toastr
 //= require_tree .
+//= require toastr
+//= require jquery
 $(document).ready(function() {
             var sideslider = $('[data-toggle=collapse-side]');
             var sel = sideslider.attr('data-target');

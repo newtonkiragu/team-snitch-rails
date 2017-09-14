@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :mzazis
   devise_for :mwanafunzis
+  resources :teacher_attachments
   resources :school_attachments
   resources :students do
     resources :parents

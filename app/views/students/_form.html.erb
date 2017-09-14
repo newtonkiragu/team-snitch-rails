@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-md-5">
 <%= form_with(model: student, local: true) do |form| %>
   <% if student.errors.any? %>
     <div id="error_explanation">
@@ -16,21 +18,21 @@
   </div>
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :student_name %>
+    <%= form.text_field :name, id: :student_name, class: "form-control" %>
   </div>
   <div class="field">
     <%= form.label :fee %>
-    <%= form.number_field :fee, id: :student_fee %>
+    <%= form.number_field :fee, id: :student_fee, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :dormitory %>
-    <%= form.text_field :dormitory, id: :student_dormitory %>
+    <%= form.text_field :dormitory, id: :student_dormitory, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :clubs %>
-    <%= form.text_field :clubs, id: :student_clubs %>
+    <%= form.text_field :clubs, id: :student_clubs , class: "form-control"%>
 
   <div class="field">
     <%= form.label :stream %>
@@ -42,6 +44,8 @@
 </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-default" %>
   </div>
 <% end %>
+</div>
+</div>
