@@ -24,6 +24,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/edit
   def edit
+    @subjects = Subject.all
   end
 
   # POST /teachers
@@ -62,6 +63,10 @@ class TeachersController < ApplicationController
         format.json { render json: @teacher.errors, status: :unprocessable_entity }
       end
     end
+    me = params[:subject_ids]
+    @subject = Subject.find(me)
+
+      @teacher.update(subjects: @subject)
   end
 
   # DELETE /teachers/1
