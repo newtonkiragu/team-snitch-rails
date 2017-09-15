@@ -3,44 +3,37 @@
 <div class="">
 
 
-<div class="student_show">
-<p>
-  <strong> Student Picture:</strong>
+  <div class="row container">
+    <div class="col-md-6">
+      <h2 class="h2 text-primary">Student Details</h2>
+      <h4 class="text-success">Name: <em><%= @student.name%></em></h4>
+      <br>
+      <h4 class="text-success">Level: <em><%= @student.stream.level%></em></h4>
+      <br>
+      <h4 class="text-success">Stream: <em><%= @student.stream.stream%></em></h4>
+      <br>
+      <h4 class="text-success">Fee: <em><%= @student.fee%></em></h4>
+      <br>
+      <h4 class="text-success">Dormitory: <em><%= @student.dormitory%></em></h4>
+      <br>
+      <h4 class="text-success">Clubs: <em><%= @student.clubs%></em></h4>
+  <h4 class="text-primary">
+      <strong>Subject Names:</strong><br><br>
+      <%= @student.subjects.map {|c| c.name}.join(', ') %>
+    </h4>
 
-<%= image_tag @student.picture_url.to_s, class:"img-circle img-responsive", alt:"...", style:"width:30%; height:50%"%>
+    </div>
 
-</p>
+    <div class="col-md-6">
+      <p>
+        <strong> Student Picture:</strong><br>
 
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
-<p>
-  <strong>Stream:</strong>
-  <%= @student.stream.level %>  <%= @student.stream.stream %>
+        <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
 
-</p>
+      </p>
+    </div>
 
-<p>
-  <strong>Fee:</strong>
-  <%= @student.fee %>
-</p>
-
-<p>
-  <strong>Dormitory:</strong>
-  <%= @student.dormitory %>
-</p>
-
-<p>
-  <strong>Clubs:</strong>
-  <%= @student.clubs %>
-</p>
-<p>
-  <strong>Subject Names:</strong>
-  <%= @student.subjects.map {|c| c.name}.join(', ') %>
-</p>
-
-
+  </div>
 <%= link_to 'Grades', student_grades_path(@student) %>
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %> |
