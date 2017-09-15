@@ -11,13 +11,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.label :stream %>
-    <%= collection_select(:assignment, :stream_id, Stream.all, :id, :stream) %>
+    <%= form.label :Level %>
+    <%= collection_select(:assignment, :level_id, Level.all, :id, :level) %>
   </div>
 
   <div class="field">
-    <%= form.label :subject %>
-    <%= form.text_field :subject, id: :assignment_subject %>
+    <%= form.label :Subject %>
+    <%= collection_select(:assignment, :subject_id, Subject.all, :id, :name) %>
   </div>
 
   <div class="field">
