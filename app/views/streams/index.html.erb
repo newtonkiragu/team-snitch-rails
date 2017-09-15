@@ -14,7 +14,7 @@
   <tbody>
     <% @streams.each do |stream| %>
       <tr>
-        <td><%= stream.level %></td>
+        <td><%= stream.level.level %></td>
         <td><%= stream.stream %></td>
         <td><%= link_to 'Show', stream %></td>
         <td><%= link_to 'Edit', edit_stream_path(stream) %></td>
