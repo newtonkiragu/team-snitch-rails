@@ -39,8 +39,8 @@
     <%= collection_select(:student, :stream_id, Stream.all, :id, :name_with_state) %>
   </div>
   <div class="field">
-      <%= form.label :subjects %>
-  <%= collection_check_boxes(:student, :subject_ids, @subjects, :id, :name) %>
+   <%= form.label :subjects %>
+   <%= collection_check_boxes(:student, :subject_ids, @subjects, :id, :name) %>
 </div>
 
   <div class="actions">

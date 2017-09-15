@@ -21,6 +21,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+        @subjects = Subject.all
   end
 
   # POST /students
