@@ -1,42 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<<<<<<< HEAD
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @student.picture_url.to_s%>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
-<p>
-  <strong>Stream:</strong>
-  <%= @student.stream.level.level %>  <%= @student.stream.stream %>
-
-</p>
-
-<p>
-  <strong>Fee:</strong>
-  <%= @student.fee %>
-</p>
-
-<p>
-  <strong>Dormitory:</strong>
-  <%= @student.dormitory %>
-</p>
-
-<p>
-  <strong>Clubs:</strong>
-  <%= @student.clubs %>
-</p>
-<p>
-  <strong>Subject Names:</strong>
-  <%= @student.subjects.map {|c| c.name}.join(', ') %>
-</p>
-=======
-<div class="">
-
-
   <div class="row container">
     <div class="col-md-6">
       <h2 class="h2 text-primary">Student Details</h2>
@@ -59,6 +22,12 @@
     </div>
 
     <div class="col-md-6">
+      <h3>Assignments</h3>
+      <% @assignments.each do |assignment|%>
+        <h4><%= assignment.subject%></h4><br>
+        <h4><%= assignment.assignment_details%></h4>
+        <h4><%= assignment.due_date%></h4>
+      <% end %>
       <p>
         <strong> Student Picture:</strong><br>
 
@@ -68,7 +37,6 @@
     </div>
 
   </div>
->>>>>>> bf2a2dc8908e27393c88a9480158e8aeef369c59
 <%= link_to 'Grades', student_grades_path(@student) %>
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %> |
