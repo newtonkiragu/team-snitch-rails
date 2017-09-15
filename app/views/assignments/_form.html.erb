@@ -11,6 +11,35 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.text_field :level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stream %>
+      <%= form.text_field :stream %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.text_field :subject, id: :assignment_subject %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignment_details %>
+    <%= form.text_area :assignment_details, id: :assigno, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :due_date %>
+    <%= form.datetime_local_field :due_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extra_resources %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
