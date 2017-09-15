@@ -10,15 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :level %>
-    <%= form.text_field :level %>
-  </div>
-
   <div class="field">
     <%= form.label :stream %>
-      <%= form.text_field :stream %>
+    <%= collection_select(:assignment, :stream_id, Stream.all, :id, :stream) %>
   </div>
 
   <div class="field">

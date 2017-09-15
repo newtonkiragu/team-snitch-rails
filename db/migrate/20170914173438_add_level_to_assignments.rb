@@ -1,6 +1,5 @@
 class AddLevelToAssignments < ActiveRecord::Migration[5.1]
   def change
-    add_column :assignments, :level_id, :varchar
     add_column :assignments, :stream_id, :varchar
     add_column :assignments, :subject_id, :varchar
     add_column :assignments, :assignment_details, :varchar
