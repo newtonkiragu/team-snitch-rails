@@ -7,5 +7,5 @@ class Stream < ApplicationRecord
 
   def name_with_state
   "#{level.level} #{stream}"
-end
+  end
 end
