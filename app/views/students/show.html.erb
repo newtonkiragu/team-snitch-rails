@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
 <p>
   <strong>Picture:</strong>
   <%= image_tag @student.picture_url.to_s%>
@@ -32,6 +33,42 @@
   <strong>Subject Names:</strong>
   <%= @student.subjects.map {|c| c.name}.join(', ') %>
 </p>
+=======
+<div class="">
+
+
+  <div class="row container">
+    <div class="col-md-6">
+      <h2 class="h2 text-primary">Student Details</h2>
+      <h4 class="text-success">Name: <em><%= @student.name%></em></h4>
+      <br>
+      <h4 class="text-success">Level: <em><%= @student.stream.level%></em></h4>
+      <br>
+      <h4 class="text-success">Stream: <em><%= @student.stream.stream%></em></h4>
+      <br>
+      <h4 class="text-success">Fee: <em><%= @student.fee%></em></h4>
+      <br>
+      <h4 class="text-success">Dormitory: <em><%= @student.dormitory%></em></h4>
+      <br>
+      <h4 class="text-success">Clubs: <em><%= @student.clubs%></em></h4>
+  <h4 class="text-primary">
+      <strong>Subject Names:</strong><br><br>
+      <%= @student.subjects.map {|c| c.name}.join(', ') %>
+    </h4>
+
+    </div>
+
+    <div class="col-md-6">
+      <p>
+        <strong> Student Picture:</strong><br>
+
+        <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
+
+      </p>
+    </div>
+
+  </div>
+>>>>>>> bf2a2dc8908e27393c88a9480158e8aeef369c59
 <%= link_to 'Grades', student_grades_path(@student) %>
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %> |

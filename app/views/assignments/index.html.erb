@@ -12,6 +12,10 @@
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
+        <td><%= assignment.level %></td>
+        <td><%= assignment.subject %></td>
+        <td><%= assignment.assignment_details %></td>
+        <td><%= assignment.due_date %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
         <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

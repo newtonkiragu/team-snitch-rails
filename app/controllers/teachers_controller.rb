@@ -35,7 +35,7 @@ class TeachersController < ApplicationController
       if @teacher.save
         params[:teacher_attachments]['avatar'].each do |a|
          @teacher_attachment = @teacher.teacher_attachments.create!(:avatar => a)
-      end
+        end
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
@@ -72,6 +72,8 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
+    @teacher.subjects.delete_all
+    # delete the subjects first then delete the teacher
     @teacher.destroy
     respond_to do |format|
       format.html { redirect_to teachers_url, notice: 'Teacher was successfully destroyed.' }

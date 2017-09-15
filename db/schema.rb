@@ -18,14 +18,11 @@ ActiveRecord::Schema.define(version: 20170915100318) do
   create_table "assignments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "documents", force: :cascade do |t|
-    t.bigint "school_id"
-    t.string "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_documents_on_school_id"
+    t.string "stream_id"
+    t.string "subject_id"
+    t.string "assignment_details"
+    t.datetime "due_date"
+    t.string "extra_resources"
   end
 
   create_table "grades", force: :cascade do |t|
@@ -175,7 +172,6 @@ ActiveRecord::Schema.define(version: 20170915100318) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
   add_foreign_key "subject_teachers", "subjects"
   add_foreign_key "subject_teachers", "teachers"
