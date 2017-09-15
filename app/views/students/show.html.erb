@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<div class="">
+
+
+<div class="student_show">
 <p>
-  <strong>Picture:</strong>
-  <%= image_tag @student.picture_url.to_s%>
+  <strong> Student Picture:</strong>
+
+<%= image_tag @student.picture_url.to_s, class:"img-circle img-responsive", alt:"...", style:"width:30%; height:50%"%>
+
 </p>
+
 <p>
   <strong>Name:</strong>
   <%= @student.name %>
