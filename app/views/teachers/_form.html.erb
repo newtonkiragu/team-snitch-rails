@@ -20,6 +20,9 @@
     <%= form.label :role %>
     <%= form.text_field :role, id: :teacher_role %>
   </div>
+  <div class="field">
+    <%= form.file_field :picture %>
+  </div>
   <%= form.fields_for :teacher_attachments do |p| %>
      <div class="field">
        <%= p.label :avatar %><br>

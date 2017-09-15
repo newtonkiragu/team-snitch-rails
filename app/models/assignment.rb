@@ -1,6 +1,6 @@
 class Assignment < ApplicationRecord
   belongs_to :subject
-  belongs_to :stream
+  belongs_to :level
   def name_with_state
     "#{level}"
   end
