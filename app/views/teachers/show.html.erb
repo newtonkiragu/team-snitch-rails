@@ -17,8 +17,6 @@
     <%= subject.name%>
     <% end %>
   </p>
-
-
 <% @teacher_attachments.each do |p| %>
   <%= image_tag p.avatar_url %>
   <%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>

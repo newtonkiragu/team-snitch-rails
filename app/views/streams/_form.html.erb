@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :level %>
-    <%= form.number_field :level, id: :stream_level %>
+    <%= collection_select(:stream, :level_id, Level.all, :id, :level) %>
   </div>
 
   <div class="field">

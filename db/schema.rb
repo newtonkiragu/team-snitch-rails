@@ -10,12 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912125141) do
+ActiveRecord::Schema.define(version: 20170915113033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "subject_id"
+    t.string "assignment_details"
+    t.datetime "due_date"
+    t.string "extra_resources"
+    t.integer "level_id"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.integer "score"
+    t.string "grade"
+    t.integer "subject_id"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,10 +100,10 @@ ActiveRecord::Schema.define(version: 20170912125141) do
   end
 
   create_table "streams", force: :cascade do |t|
-    t.integer "level"
     t.string "stream"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -96,6 +116,12 @@ ActiveRecord::Schema.define(version: 20170912125141) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.integer "stream_id"
+  end
+
+  create_table "students_subjects", id: false, force: :cascade do |t|
+    t.bigint "subject_id", null: false
+    t.bigint "student_id", null: false
+    t.index ["subject_id", "student_id"], name: "index_students_subjects_on_subject_id_and_student_id"
   end
 
   create_table "subject_teachers", force: :cascade do |t|

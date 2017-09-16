@@ -2,7 +2,8 @@
 
 <h1>Students</h1>
 
-<table>
+<div class="">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,8 +20,6 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.name %></td>
-        <td><%= student.stream.level%></td>
-        <td><%= student.stream.stream%></td>
         <td><%= student.fee %></td>
         <td><%= student.dormitory %></td>
         <td><%= student.clubs %></td>
@@ -31,6 +30,8 @@
     <% end %>
   </tbody>
 </table>
+
+</div>
 
 <br>
 

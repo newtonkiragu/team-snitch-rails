@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :picture %>
+    <%= form.file_field :picture %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :teacher_name %>
   </div>
@@ -19,6 +24,9 @@
   <div class="field">
     <%= form.label :role %>
     <%= form.text_field :role, id: :teacher_role %>
+  </div>
+  <div class="field">
+    <%= form.file_field :picture %>
   </div>
   <%= form.fields_for :teacher_attachments do |p| %>
      <div class="field">

@@ -1,0 +1,30 @@
+<%= form_for [@student, @grade] do |form| %>
+  <% if grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
+
+      <ul>
+      <% grade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+  <%= form.label :subjects %>
+    <%= collection_select(:grade, :subject_id, @subjects, :id, :name) %>
+</div>
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.number_field :score, id: :grade_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.text_field :grade, id: :grade_grade %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

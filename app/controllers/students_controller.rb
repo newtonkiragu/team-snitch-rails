@@ -10,15 +10,18 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @assignments=Assignment.where(level_id: @student.stream.level.id)
   end
 
   # GET /students/new
   def new
     @student = Student.new
+    @subjects = Subject.all
   end
 
   # GET /students/1/edit
   def edit
+        @subjects = Subject.all
   end
 
   # POST /students
@@ -69,6 +72,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :fee, :dormitory, :clubs, :picture, :stream_id)
+      params.require(:student).permit(:name, :fee, :dormitory, :clubs, :picture, :stream_id, :subject_ids => [])
     end
 end

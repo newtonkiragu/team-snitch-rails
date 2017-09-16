@@ -10,6 +10,29 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= form.label :Level %>
+    <%= collection_select(:assignment, :level_id, Level.all, :id, :level) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Subject %>
+    <%= collection_select(:assignment, :subject_id, Subject.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignment_details %>
+    <%= form.text_area :assignment_details, id: :assigno, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :due_date %>
+    <%= form.datetime_local_field :due_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extra_resources %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

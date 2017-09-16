@@ -1,33 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @student.picture_url.to_s%>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
-<p>
-  <strong>Stream:</strong>
-  <%= @student.stream.level %>  <%= @student.stream.stream %>
+  <div class="row container">
+    <div class="col-md-6">
+      <h4 class="text-success">Name: <%= @student.name%></h4>
+      <br>
+      <h4 class="text-success">Level: <%= @student.stream.level.level%></h4>
+      <br>
+      <h4 class="text-success">Stream: <%= @student.stream.stream%></h4>
+      <br>
+      <h4 class="text-success">Fee: <%= @student.fee%></h4>
+      <br>
+      <h4 class="text-success">Dormitory: <%= @student.dormitory%></h4>
+      <br>
+      <h4 class="text-success">Clubs: <%= @student.clubs%></h4>
+      <br>
+      <h4 class='text-success'> Subject Names:
+      <%= @student.subjects.map {|c| c.name}.join(', ') %></h4>
 
-</p>
+    </div>
 
-<p>
-  <strong>Fee:</strong>
-  <%= @student.fee %>
-</p>
+    <div class="col-md-6">
+      <h3>Assignments</h3>
+      <% @assignments.each do |assignment|%>
+        <h4><%= assignment.subject%></h4><br>
+        <h4><%= assignment.assignment_details%></h4>
+        <h4><%= assignment.due_date%></h4>
+      <% end %>
+      <p>
+        <strong> Student Picture:</strong><br>
 
-<p>
-  <strong>Dormitory:</strong>
-  <%= @student.dormitory %>
-</p>
+        <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
 
-<p>
-  <strong>Clubs:</strong>
-  <%= @student.clubs %>
-</p>
+      </p>
+    </div>
 
+  </div>
+<%= link_to 'Grades', student_grades_path(@student) %>
 <%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Back', students_path %> |

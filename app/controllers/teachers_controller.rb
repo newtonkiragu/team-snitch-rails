@@ -35,7 +35,7 @@ class TeachersController < ApplicationController
       if @teacher.save
         params[:teacher_attachments]['avatar'].each do |a|
          @teacher_attachment = @teacher.teacher_attachments.create!(:avatar => a)
-      end
+        end
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else

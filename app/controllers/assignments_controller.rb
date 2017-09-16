@@ -15,6 +15,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new
   def new
     @assignment = Assignment.new
+    @subjects = Subject.all
   end
 
   # GET /assignments/1/edit
@@ -69,6 +70,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.fetch(:assignment, {})
+      params.require(:assignment).permit(:level_id, :subject_id, :assignment_details, :due_date, :extra_resources)
     end
 end
