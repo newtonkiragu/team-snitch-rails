@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<<<<<<< HEAD
 <h2 class="h2 text-primary">Student Details</h2>
 <div class="">
 <div class="row">
@@ -13,8 +12,6 @@
 
   </p>
 
-=======
->>>>>>> 29084350ca45a271f2651e5a7f03ea2b943783bc
   <div class="row container">
     <div class="col-md-6">
       <h4 class="text-success">Name: <%= @student.name%></h4>
@@ -34,23 +31,7 @@
 
     </div>
 
-<<<<<<< HEAD
-=======
-    <div class="col-md-6">
-      <h3>Assignments</h3>
-      <% @assignments.each do |assignment|%>
-        <h4><%= assignment.subject%></h4><br>
-        <h4><%= assignment.assignment_details%></h4>
-        <h4><%= assignment.due_date%></h4>
-      <% end %>
-      <p>
-        <strong> Student Picture:</strong><br>
 
-        <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
-
-      </p>
-    </div>
->>>>>>> 29084350ca45a271f2651e5a7f03ea2b943783bc
 
   </div>
 </div>
