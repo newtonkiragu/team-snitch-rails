@@ -33,6 +33,10 @@
        <%= p.label :avatar %><br>
        <%= p.file_field :avatar, :multiple => true, name: "teacher_attachments[avatar][]" %>
      </div>
+     <div class="field">
+       <%= form.label :stream %>
+       <%= collection_select(:teachers, :stream_id, Stream.all, :id, :name_with_state) %>
+     </div>
    <% end %>
 
   <% @subjects.each do |subject|%>
