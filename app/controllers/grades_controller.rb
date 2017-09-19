@@ -1,5 +1,6 @@
 class GradesController < ApplicationController
   before_action :set_grade, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :index
 
   # GET /grades
   # GET /grades.json
@@ -17,6 +18,7 @@ class GradesController < ApplicationController
   def new
     @student = Student.find(params[:student_id])
     @subjects = @student.subjects
+    @exams = Exam.all
     @grade = @student.grades.new
   end
 
@@ -74,6 +76,6 @@ class GradesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grade_params
-      params.require(:grade).permit(:score, :grade, :subject_id)
+      params.require(:grade).permit(:exam_id, :score, :grade, :subject_id)
     end
 end

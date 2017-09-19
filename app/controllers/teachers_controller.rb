@@ -12,7 +12,10 @@ class TeachersController < ApplicationController
   def show
     @teacher =  Teacher.find(params[:id])
     @teacher_attachments = @teacher.teacher_attachments.all
-
+    @subjects = @teacher.subjects
+    @subject = @subjects.each do |subject|
+      subject.id
+    end
   end
 
   # GET /teachers/new

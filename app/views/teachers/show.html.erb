@@ -13,14 +13,35 @@
   <strong>Role:</strong>
   <%= @teacher.role %>
 </p>
-  <p><% @teacher.subjects.each do |subject| %>
-    <%= subject.name%>
-    <% end %>
-  </p>
+<p><% @teacher.subjects.each do |subject| %>
+  <%= subject.name%>
+  <% end %>
+</p>
+<p><% @teacher.streams.each do |stream| %>
+  <%= stream.level.level %>
+  <%= stream.stream %>
+
+  <% stream.students.each do |student| %>
+  <% student.subjects.each do |s| %>
+  <br>
+  <br>
+  <br>
+  <% if @subject.each do |s1| %>
+  <% if s1.id == s.id %>
+
+  <%= student.name %>
+  <% end %>
+  <% end %>
+  <% end %>
+  <% end %>
+  <% end %>
+  <% end %>
+</p>
 <% @teacher_attachments.each do |p| %>
-  <%= image_tag p.avatar_url %>
-  <%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>
+<%= image_tag p.avatar_url %>
+<%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>
 <% end %>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
+<%= link_to 'Edit', edit_teacher_path(@teacher) %>
+|
 <%= link_to 'Back', teachers_path %>

@@ -36,7 +36,7 @@
      <% end %>
      <div class="field">
        <%= form.label :stream %>
-       <%= collection_check_boxes(:teacher, :stream_ids, Stream.all, :id, :stream) %>
+       <%= collection_check_boxes(:teacher, :stream_ids, Stream.all, :id, :name_with_state ) %>
    </div>
    <div class="field">
      <%= form.label :subjects %>
