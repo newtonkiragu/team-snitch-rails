@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery except: :index
   # GET /students
   # GET /students.json
   def index

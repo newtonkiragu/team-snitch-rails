@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915113033) do
+ActiveRecord::Schema.define(version: 20170919125729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20170915113033) do
     t.integer "level_id"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.bigint "school_id"
+    t.string "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_documents_on_school_id"
+  end
+
+  create_table "exams", force: :cascade do |t|
+    t.string "name"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "grades", force: :cascade do |t|
     t.integer "score"
     t.string "grade"
@@ -32,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170915113033) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exam_id"
   end
 
   create_table "levels", force: :cascade do |t|
@@ -106,6 +122,12 @@ ActiveRecord::Schema.define(version: 20170915113033) do
     t.integer "level_id"
   end
 
+  create_table "streams_teachers", id: false, force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.bigint "stream_id", null: false
+    t.index ["teacher_id", "stream_id"], name: "index_streams_teachers_on_teacher_id_and_stream_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "stream"
@@ -124,17 +146,16 @@ ActiveRecord::Schema.define(version: 20170915113033) do
     t.index ["subject_id", "student_id"], name: "index_students_subjects_on_subject_id_and_student_id"
   end
 
-  create_table "subject_teachers", force: :cascade do |t|
-    t.bigint "subject_id"
-    t.bigint "teacher_id"
-    t.index ["subject_id"], name: "index_subject_teachers_on_subject_id"
-    t.index ["teacher_id"], name: "index_subject_teachers_on_teacher_id"
-  end
-
   create_table "subjects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects_teachers", id: false, force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.bigint "subject_id", null: false
+    t.index ["teacher_id", "subject_id"], name: "index_subjects_teachers_on_teacher_id_and_subject_id"
   end
 
   create_table "teacher_attachments", force: :cascade do |t|
@@ -172,7 +193,6 @@ ActiveRecord::Schema.define(version: 20170915113033) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
-  add_foreign_key "subject_teachers", "subjects"
-  add_foreign_key "subject_teachers", "teachers"
 end

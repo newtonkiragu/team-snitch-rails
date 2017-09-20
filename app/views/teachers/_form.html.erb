@@ -33,13 +33,15 @@
        <%= p.label :avatar %><br>
        <%= p.file_field :avatar, :multiple => true, name: "teacher_attachments[avatar][]" %>
      </div>
-   <% end %>
-
-  <% @subjects.each do |subject|%>
-  <%= form.label subject.name%>
-  <%= check_box_tag "subject_ids[]", subject.id, false,boy: subject.id , class: 'checkbox-inline'%>
-
-  <% end %>
+     <% end %>
+     <div class="field">
+       <%= form.label :stream %>
+       <%= collection_check_boxes(:teacher, :stream_ids, Stream.all, :id, :name_with_state ) %>
+   </div>
+   <div class="field">
+     <%= form.label :subjects %>
+     <%= collection_check_boxes(:teacher, :subject_ids, Subject.all, :id, :name) %>
+ </div>
 
 
   <div class="actions">

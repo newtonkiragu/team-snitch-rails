@@ -1,6 +1,6 @@
 class StreamsController < ApplicationController
   before_action :set_stream, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery except: :index
   # GET /streams
   # GET /streams.json
   def index

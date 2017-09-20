@@ -17,6 +17,10 @@
         <%= subject.name%>,
         <% end %>
       </em></h3>
+      <h3><em>Streams:<% teacher.streams.each do |stream| %>
+          <%= stream.level.level%><%= stream.stream%>,
+          <% end %>
+        </em></h3>
   </div>
       </div>
     </div>

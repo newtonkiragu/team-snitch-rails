@@ -14,6 +14,10 @@
   <%= form.label :subjects %>
     <%= collection_select(:grade, :subject_id, @subjects, :id, :name) %>
 </div>
+<div class="field">
+  <%= form.label :exam %>
+    <%= collection_select(:grade, :exam_id, @exams, :id, :name) %>
+</div>
   <div class="field">
     <%= form.label :score %>
     <%= form.number_field :score, id: :grade_score %>
