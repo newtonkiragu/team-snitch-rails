@@ -12,7 +12,7 @@
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.level %></td>
+        <td><%= assignment.level.level %></td>
         <td><%= assignment.subject %></td>
         <td><%= assignment.assignment_details %></td>
         <td><%= assignment.due_date %></td>

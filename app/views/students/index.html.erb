@@ -23,6 +23,8 @@
         <td><%= student.fee %></td>
         <td><%= student.dormitory %></td>
         <td><%= student.clubs %></td>
+
+
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,5 +36,9 @@
 </div>
 
 <br>
+<h2>Graphical Data Presentation</h2>
+    <hr>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <hr>
 
 <%= link_to 'New Student', new_student_path %>
