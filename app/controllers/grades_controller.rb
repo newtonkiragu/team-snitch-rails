@@ -5,6 +5,7 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.json
   def index
+    @exams = Exam.all
     @student = Student.find(params[:student_id])
     @grades = Grade.all
   end
@@ -24,6 +25,7 @@ class GradesController < ApplicationController
 
   # GET /grades/1/edit
   def edit
+        @exams = Exam.all
     @student = Student.find(params[:student_id])
     @subjects = @student.subjects
   end
