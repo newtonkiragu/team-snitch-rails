@@ -1,3 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @teacher.picture_url.to_s, class:"img-thumbnail img-responsive"%>
+      <hr>
+      <h3>Logged in as: <%= @teacher.name%></h3>
+      <hr>
+    </div>
+    <div class="col-md-8">
+      <div class="container-fluid">
+        <img src="https://thumbs.dreamstime.com/z/school-timetable-blackboard-27000277.jpg" class="img-responsive img-thumbnail"alt="">
+        <hr>
+        <div class="container">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#grades">Add Grades</a></li>
+            <li><a data-toggle="tab" href="#assignments">Add assignments</a></li>
+            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div id="grades" class="tab-pane fade">
+              <%= render 'grades/form'%>
+            <div id="assignments" class="tab-pane fade">
+              <%= render 'assignments/form'%>
+            <div id="menu3" class="tab-pane fade">
+              <h3>Menu 3</h3>
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
