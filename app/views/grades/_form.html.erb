@@ -11,6 +11,11 @@
   </ul>
 </div>
 <% end %>
+<div class="field">
+  <%= form.label :exam %>
+    <%= collection_select(:grade, :exam_id, @exams, :id, :name) %>
+</div>
+
 <div class="row">
   <div class="col-md-2">
     <div class="field">
