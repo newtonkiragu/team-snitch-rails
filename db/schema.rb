@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 20170919125729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "exam_id"
+    t.integer "cat1"
+    t.integer "cat2"
+    t.integer "cat3"
   end
 
   create_table "levels", force: :cascade do |t|

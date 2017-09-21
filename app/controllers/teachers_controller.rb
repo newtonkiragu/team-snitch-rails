@@ -16,6 +16,27 @@ class TeachersController < ApplicationController
     @subject = @subjects.each do |subject|
       subject.id
     end
+    @teacher.streams.each do |stream|
+      stream.level.level
+      stream.stream
+
+      stream.students.each do |student|
+      student.subjects.each do |s|
+      if @subject.each do |s1|
+      if s1.id == s.id
+
+      @studo = student.name
+      end
+      end
+      end
+      end
+      end
+    end
+    @student = Student.find_by name: @studo
+    @subjects = @student.subjects
+    @exams = Exam.all
+    @grade = @student.grades.new
+    @assignment = Assignment.new
   end
 
   # GET /teachers/new

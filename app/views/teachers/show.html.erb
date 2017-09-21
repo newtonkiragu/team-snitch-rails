@@ -1,45 +1,105 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @teacher.picture_url.to_s, class:"img-thumbnail img-responsive"%>
+      <hr>
+      <h3>Logged in as:
+        <%= @teacher.name%></h3>
+      <hr>
+    </div>
+    <div class="col-md-8">
+      <div class="container-fluid">
+        <div class="timetable">
+          <img src="https://thumbs.dreamstime.com/z/school-timetable-blackboard-27000277.jpg" class="img-responsive img-thumbnail" alt="" style="width:40%">
+        </div>
+        <hr>
+        <div class="container">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a data-toggle="tab" href="#students">View students</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#grades">Add Grades</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#assignments">Add assignments</a>
+            </li>
+          </ul>
 
-<p>
-  <strong>Profile:</strong>
-  <%= image_tag @teacher.picture_url.to_s%>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @teacher.name %>
-</p>
+          <div class="tab-content">
+            <div id="grades" class="tab-pane fade">
+              <%= render 'grades/form'%>
+            </div>
+            <div id="assignments" class="tab-pane fade">
+              <%= render 'assignments/form'%>
+            </div>
+            <div id="students" class="tab-pane fade">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Class</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-<p>
-  <strong>Role:</strong>
-  <%= @teacher.role %>
-</p>
-<p><% @teacher.subjects.each do |subject| %>
-  <%= subject.name%>
-  <% end %>
-</p>
-<p><% @teacher.streams.each do |stream| %>
+                      <p><% @teacher.subjects.each do |subject| %>
+                        <% subject.name%>
+                        <% end %>
+                      </p>
+                      <% @teacher.streams.each do |stream| %>
+                      <% stream.level.level %>
+                      <% stream.stream %>
 
-  <% stream.students.each do |student| %>
-  <% student.subjects.each do |s| %>
-  <br>
-  <br>
-  <br>
-  <% @subject.each do |s1| %>
-  <% if s1.id == s.id %>
+                      <% stream.students.each do |student| %>
+                      <% student.subjects.each do |s| %>
+                      <% @subject.each do |s1| %>
+                      <% if s1.id == s.id %>
 
-  <%= student.name %>
-  <%= student.stream.level.level %>
-  <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
-</p>
-<% @teacher_attachments.each do |p| %>
-<%= image_tag p.avatar_url %>
-<%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>
-<% end %>
+                      <tr>
+                      <td>
+                        <%= student.name %>
+                      </td>
+                      <td><%= student.stream.level.level %>
+                        <%= student.stream.stream%>
+                      </td>
+                    </tr>
+                      <% end %>
+                      <% end %>
+                      <% end %>
+                      <% end %>
+                      <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %>
-|
-<%= link_to 'Back', teachers_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Profile:</strong>
+      <%= image_tag @teacher.picture_url.to_s%>
+    </p>
+    <p>
+      <strong>Name:</strong>
+      <%= @teacher.name %>
+    </p>
+
+    <p>
+      <strong>Role:</strong>
+      <%= @teacher.role %>
+    </p>
+
+    <% @teacher_attachments.each do |p| %>
+    <%= image_tag p.avatar_url %>
+    <%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>
+    <% end %>
+
+    <%= link_to 'Edit', edit_teacher_path(@teacher) %>
+    |
+    <%= link_to 'Back', teachers_path %>
