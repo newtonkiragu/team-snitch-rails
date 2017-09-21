@@ -10,7 +10,7 @@
     <div class="col-md-8">
       <div class="container-fluid">
         <div class="timetable">
-          <img src="https://thumbs.dreamstime.com/z/school-timetable-blackboard-27000277.jpg" class="img-responsive img-thumbnail" alt="">
+          <img src="https://thumbs.dreamstime.com/z/school-timetable-blackboard-27000277.jpg" class="img-responsive img-thumbnail" alt="" style="width:40%">
         </div>
         <hr>
         <div class="container">
@@ -34,8 +34,7 @@
               <%= render 'assignments/form'%>
             </div>
             <div id="students" class="tab-pane fade">
-              <div class="table">
-                <table>
+              <table class="table">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -43,7 +42,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
 
                       <p><% @teacher.subjects.each do |subject| %>
                         <% subject.name%>
@@ -55,24 +53,22 @@
 
                       <% stream.students.each do |student| %>
                       <% student.subjects.each do |s| %>
-                      <br>
-                      <br>
-                      <br>
                       <% @subject.each do |s1| %>
                       <% if s1.id == s.id %>
 
+                      <tr>
                       <td>
                         <%= student.name %>
                       </td>
                       <td><%= student.stream.level.level %>
                         <%= student.stream.stream%>
                       </td>
-                      <% end %>
-                      <% end %>
-                      <% end %>
-                      <% end %>
-                      <% end %>
                     </tr>
+                      <% end %>
+                      <% end %>
+                      <% end %>
+                      <% end %>
+                      <% end %>
                   </tbody>
                 </table>
               </div>
