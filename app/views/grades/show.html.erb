@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= @grade.exam.name %>
+<%= @grade.subject.name %>
 <p>
   <strong>Score:</strong>
   <%= @grade.score %>
@@ -8,8 +10,7 @@
 <p>
   <strong>Grade:</strong>
   <%= @grade.grade %>
-  <%= @grade.exam.name %>
 </p>
 
-<%= link_to 'Edit', edit_student_grade_path(@grade) %> |
+<%= link_to 'Edit', edit_student_grade_path %> |
 <%= link_to 'Back', student_grades_path %>

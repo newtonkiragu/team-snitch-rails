@@ -14,6 +14,8 @@
 //= require turbolinks
 //= require_tree .
 //= require toastr
+//= require chartkick
+//= require Chart.bundle
 //= require jquery
 $(document).ready(function() {
             var sideslider = $('[data-toggle=collapse-side]');
