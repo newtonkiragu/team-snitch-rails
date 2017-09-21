@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <strong>Score:</strong>
   <%= @grade.score %>
@@ -10,5 +11,12 @@
   <%= @grade.grade %>
 </p>
 
-<%= link_to 'Edit', edit_student_grade_path(@grade) %> |
+<!-- <%= line_chart({2.day.ago =>20, 1.day.ago => 10,1.day.ago => 0, "2017-10-07 00:00:00 UTC" => 7 })%>
+
+<br>
+
+  <%= pie_chart [["Maths", 80], ["Kiswahili", 76]]%> -->
+
+<%= link_to 'Edit', edit_student_grade_path(@grade) %>
+|
 <%= link_to 'Back', student_grades_path %>

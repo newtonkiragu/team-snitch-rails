@@ -43,9 +43,16 @@
 
   </div>
 
+  <hr>
+  <div class="container">
 
+   <%= column_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+  </div>
 
 </div>
+<br>
+<br>
+
 <%= link_to 'Grades', student_grades_path(@student) %>
 <%= link_to 'Edit', edit_student_path(@student) %>
 |
