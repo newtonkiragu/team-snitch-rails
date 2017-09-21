@@ -35,6 +35,11 @@
 
   </div>
 </div>
+<div class="container">
+
+  <%= column_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+</div>
+
 <div class="col-md-6">
   <h1>Assignments</h1>
   <% @assignments.each do |assignment| %>

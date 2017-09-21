@@ -18,19 +18,17 @@
   <% end %>
 </p>
 <p><% @teacher.streams.each do |stream| %>
-  <%= stream.level.level %>
-  <%= stream.stream %>
 
   <% stream.students.each do |student| %>
   <% student.subjects.each do |s| %>
   <br>
   <br>
   <br>
-  <% if @subject.each do |s1| %>
+  <% @subject.each do |s1| %>
   <% if s1.id == s.id %>
 
   <%= student.name %>
-  <% end %>
+  <%= student.stream.level.level %>
   <% end %>
   <% end %>
   <% end %>
