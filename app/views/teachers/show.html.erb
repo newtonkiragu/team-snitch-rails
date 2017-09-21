@@ -8,26 +8,67 @@
     </div>
     <div class="col-md-8">
       <div class="container-fluid">
-        <img src="https://thumbs.dreamstime.com/z/school-timetable-blackboard-27000277.jpg" class="img-responsive img-thumbnail"alt="">
+        <div class="timetable">
+          <img src="https://thumbs.dreamstime.com/z/school-timetable-blackboard-27000277.jpg" class="img-responsive img-thumbnail"alt="">
+        </div>
         <hr>
         <div class="container">
           <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#grades">Add Grades</a></li>
+            <li class="active"><a data-toggle="tab" href="#students">View students</a></li>
+            <li><a data-toggle="tab" href="#grades">Add Grades</a></li>
             <li><a data-toggle="tab" href="#assignments">Add assignments</a></li>
-            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
           </ul>
 
           <div class="tab-content">
             <div id="grades" class="tab-pane fade">
               <%= render 'grades/form'%>
+            </div>
             <div id="assignments" class="tab-pane fade">
               <%= render 'assignments/form'%>
-            <div id="menu3" class="tab-pane fade">
-              <h3>Menu 3</h3>
-              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
-          </div>
-        </div>
+            <div id="students" class="tab-pane fade">
+              <div class="table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Class</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+
+              <p><% @teacher.subjects.each do |subject| %>
+                <% subject.name%>
+                <% end %>
+              </p>
+              <% @teacher.streams.each do |stream| %>
+                <% stream.level.level %>
+                <% stream.stream %>
+
+                <% stream.students.each do |student| %>
+                <% student.subjects.each do |s| %>
+                <br>
+                <br>
+                <br>
+                <% if @subject.each do |s1| %>
+                <% if s1.id == s.id %>
+
+                  <td>  <%= student.name %>  </td>
+                  <td><%= student.stream.level.level %>
+                      <%= student.stream.stream%>
+                  </td>
+                <% end %>
+                <% end %>
+                <% end %>
+                <% end %>
+                <% end %>
+                <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+            </div>
 
       </div>
     </div>
@@ -49,30 +90,7 @@
   <strong>Role:</strong>
   <%= @teacher.role %>
 </p>
-<p><% @teacher.subjects.each do |subject| %>
-  <%= subject.name%>
-  <% end %>
-</p>
-<p><% @teacher.streams.each do |stream| %>
-  <%= stream.level.level %>
-  <%= stream.stream %>
 
-  <% stream.students.each do |student| %>
-  <% student.subjects.each do |s| %>
-  <br>
-  <br>
-  <br>
-  <% if @subject.each do |s1| %>
-  <% if s1.id == s.id %>
-
-  <%= student.name %>
-  <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
-  <% end %>
-</p>
 <% @teacher_attachments.each do |p| %>
 <%= image_tag p.avatar_url %>
 <%= link_to "Edit Attachment", edit_teacher_attachment_path(p) %>
