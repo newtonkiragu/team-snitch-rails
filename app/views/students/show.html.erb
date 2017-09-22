@@ -1,7 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class="row container">
-  <div class="col-md-6">
+<div class="container-fluid">
+  <div class="row">
+
+
+  <div class="col-md-4">
+    <p>
+      <strong>
+        Student Picture:</strong><br>
+
+      <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
+
+    </p>
     <h4 class="text-success">Name:
       <%= @student.name%></h4>
     <br>
@@ -26,32 +36,33 @@
 
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <h3>Assignments</h3>
     <% @assignments.each do |assignment|%>
     <h4><%= assignment.subject%></h4><br>
     <h4><%= assignment.assignment_details%></h4>
     <h4><%= assignment.due_date%></h4>
     <% end %>
-    <p>
-      <strong>
-        Student Picture:</strong><br>
 
-      <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
-
-    </p>
 
   </div>
 
-  <hr>
-  <div class="container">
 
-   <%= column_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
-  </div>
+
+
+
+<div class="col-md-4">
+  <h3>Fee Representation:</h3>
+   <%= pie_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+
 
 </div>
-<br>
-<br>
+</div>
+</div>
+
+
+
+
 
 <%= link_to 'Grades', student_grades_path(@student) %>
 <%= link_to 'Edit', edit_student_path(@student) %>
