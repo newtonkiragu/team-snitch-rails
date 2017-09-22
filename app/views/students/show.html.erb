@@ -60,11 +60,12 @@
 </div>
 </div>
 
+<br>
 
 
-
-
-<%= link_to 'Grades', student_grades_path(@student) %>
+<div class="mgt">
+<%= link_to 'View Grades', student_grades_path(@student), class: 'btn btn-danger'%>
 <%= link_to 'Edit', edit_student_path(@student) %>
 |
 <%= link_to 'Back', students_path %>
+</div>
