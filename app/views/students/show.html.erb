@@ -53,7 +53,7 @@
 
 <div class="col-md-4">
   <h3>Fee Representation:</h3>
-   <%= pie_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+  <%= pie_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
 
 
 </div>
