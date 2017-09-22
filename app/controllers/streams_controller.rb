@@ -10,6 +10,13 @@ class StreamsController < ApplicationController
   # GET /streams/1
   # GET /streams/1.json
   def show
+    @stream.students.each do |studentx|
+      @studentd = studentx.id
+    end
+    @student = Student.find(@studentd)
+    @subjects = @student.subjects
+    @exams = Exam.all
+    @grade = @student.grades.new
   end
 
   # GET /streams/new
