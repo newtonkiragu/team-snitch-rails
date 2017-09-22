@@ -6,13 +6,29 @@
       <h3>Logged in as:
         <%= @teacher.name%></h3>
       <hr>
-      <h5>      <strong>Role:</strong>
-            <%= @teacher.role %></h5>
+      <h5>
+        <strong>Role:</strong>
+        <%= @teacher.role %></h5>
     </div>
     <div class="col-md-9">
       <div class="container-fluid juu">
-        <div class="timetable">
-          <img src="http://ac-grenoble.fr/college/grand-champ.pont-de-cheruy/lgc/IMG/png/planning.png?1454837894" class="img-responsive img-thumbnail" alt="" style="width:80%, height:60%">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="timetable">
+              <img src="http://ac-grenoble.fr/college/grand-champ.pont-de-cheruy/lgc/IMG/png/planning.png?1454837894" class="img-responsive img-thumbnail" alt="" style="width:80%, height:60%">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h3>
+              <img
+                class="icon icons8-Students"
+                width="64"
+                height="64"
+                src="data:image/png;base64,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">
+              <br>Students</h3>
+            <h4><%= @number%></h4>
+            <hr>
+          </div>
         </div>
         <hr>
         <div class="container right">
@@ -73,6 +89,7 @@
                   <% end %>
                 </tbody>
               </table>
+              <%= @stude%>
             </div>
             <div id="grades" class="tab-pane fade">
               <table class="table">
@@ -90,19 +107,24 @@
                   </tr>
                 </thead>
 
-              <tbody>
-                <td><%= @studo%></td>
-              <%= render 'grades/form'%>
-            </tbody>
+                <tbody>
 
-            </table>
+                    <% @studo.each do |x|%>
+                    <tr>
+                    <td><%= x %></td>
+                  <%= render 'grades/form'%>
+                </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
             <div id="assignments" class="tab-pane fade">
               <%= render 'assignments/form'%>
             </div>
-            </div>
-
           </div>
+
         </div>
       </div>
     </div>
+  </div>
+</div>
