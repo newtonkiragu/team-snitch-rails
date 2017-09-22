@@ -4,9 +4,12 @@
   <strong>Level:</strong>
   <%= @stream.level.level %>
 
-  <h2>Students</h2>
+  <h3><strong>Students</strong></h3>
   <% @stream.students.each do |student| %>
-    <%= student.name %>
+  <ul>
+
+  <li><%= student.name %> </l1>
+  </ul>
   <% end %>
 
 </p>

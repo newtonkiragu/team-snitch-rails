@@ -25,6 +25,8 @@
         <td><%= student.fee %></td>
         <td><%= student.dormitory %></td>
         <td><%= student.clubs %></td>
+
+
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -36,5 +38,7 @@
 </div>
 
 <br>
+
+
 
 <%= link_to 'New Student', new_student_path %>
