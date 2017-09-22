@@ -1,9 +1,52 @@
 p {
   font-size: 16px;
 }
+
 h2 {
   text-align: center;
 }
-.image{
+
+.student_pic {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.student_info {
+  padding: 10 4;
+  background-color: powderblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content_right {
+  background-color: red;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.student_ass {
   text-align: center;
+  float: left;
+  width: 50%;
+}
+
+.fee_chart {
+  text-align: center;
+  float: right;
+  width: 50%;
+}
+
+.mgt {
+  text-align: center;
+}
+
+.mgt1 {
+  text-align: center;
+
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: gray;
+  }
+
+  &:visited {}
 }

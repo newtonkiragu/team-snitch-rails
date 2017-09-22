@@ -1,5 +1,5 @@
 class GradesController < ApplicationController
-  before_action :set_grade, only: [:show, :edit, :update, :destroy]
+  before_action :set_grade, only: %i[show edit update destroy]
   protect_from_forgery except: :index
 
   # GET /grades
@@ -12,8 +12,7 @@ class GradesController < ApplicationController
 
   # GET /grades/1
   # GET /grades/1.json
-  def show
-  end
+  def show; end
 
   # GET /grades/new
   def new
@@ -25,7 +24,7 @@ class GradesController < ApplicationController
 
   # GET /grades/1/edit
   def edit
-        @exams = Exam.all
+    @exams = Exam.all
     @student = Student.find(params[:student_id])
     @subjects = @student.subjects
   end
@@ -71,13 +70,13 @@ class GradesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grade
-      @grade = Grade.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def grade_params
-      params.require(:grade).permit(:cat1, :cat2, :cat3, :exam_id, :score, :grade, :subject_id)
-    end
+  def set_grade
+    @grade = Grade.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def grade_params
+    params.require(:grade).permit(:cat1, :cat2, :cat3, :exam_id, :score, :grade, :subject_id)
+  end
 end

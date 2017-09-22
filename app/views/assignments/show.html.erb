@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
+<p>Assignment Level:</p>
 <%= @assignment.level.level %>
+<p>Subject Name:</p>
 <%= @assignment.subject.name %>
+<p>Details:</p>
 <%= @assignment.assignment_details %>
+<p>Due Date:</p>
 <%= @assignment.due_date %>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |

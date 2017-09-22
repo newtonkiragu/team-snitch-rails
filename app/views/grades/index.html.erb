@@ -1,31 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
 
-<h1>Grades</h1>
+  <div class="grades_top">
 
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Score</th>
-      <th>Grade</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1>Grades</h1>
 
-  <tbody>
-    <% @student.grades.each do |grade| %>
+      <p><%= @student.name%></p>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>cat 1</th>
+          <th>cat 2</th>
+          <th>cat 3</th>
+          <th>Score</th>
+          <th>Grade</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <% @student.grades.each do |grade| %>
       <tr>
+
         <td><%= grade.subject.name %></td>
         <td><%= grade.score %></td>
         <td><%= grade.grade %></td>
         <td><%= link_to 'Show', student_grade_path(@student.id, grade.id) %></td>
         <td><%= link_to 'Edit', edit_student_grade_path(@student.id, grade.id) %></td>
-        <td><%= link_to 'Destroy', student_grade_path(@student.id , grade.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', student_grade_path(@student.id , grade.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
 
-<br>
+    </table>
+  </div>
 
-<%= link_to 'New Grade', new_student_grade_path %>
+  <hr>
+  <br>
+  <br>
+  <div class="container">
+    <div class="student_analytics">
+<h3>Column Graph</h3>
+      <%= column_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+
+      <br>
+<h3>Pie Chart</h3>
+      <%= pie_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+    </div>
+  </div>
+
+  <br>
+</div>
+
+<div class="mgt2">
+
+
+
+  <%= link_to 'New Grade', new_student_grade_path, class: 'btn btn-success' %>
+</div>
