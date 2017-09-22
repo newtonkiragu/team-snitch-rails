@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  before_action :set_teacher, only: %i[show edit update destroy]
   protect_from_forgery except: :index
   # GET /teachers
   # GET /teachers.json
@@ -10,26 +10,18 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    @studo = []
     @teacher =  Teacher.find(params[:id])
     @teacher_attachments = @teacher.teacher_attachments.all
     @subjects = @teacher.subjects
-    @subject = @subjects.each do |subject|
-      subject.id
-    end
+    @subject = @subjects
     @teacher.streams.each do |stream|
-      stream.level.level
-      stream.stream
-
       stream.students.each do |student|
-      student.subjects.each do |s|
-      if @subject.each do |s1|
-      if s1.id == s.id
-
-      @studo = student.name
-      end
-      end
-      end
-      end
+        student.subjects.each do |s|
+          @subjects.each do |s1|
+            @studo.push(student.name) if s1.id == s.id
+          end
+        end
       end
     end
     @student = Student.find_by name: @studo
@@ -58,7 +50,7 @@ class TeachersController < ApplicationController
     respond_to do |format|
       if @teacher.save
         params[:teacher_attachments]['avatar'].each do |a|
-         @teacher_attachment = @teacher.teacher_attachments.create!(:avatar => a)
+          @teacher_attachment = @teacher.teacher_attachments.create!(avatar: a)
         end
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
@@ -71,8 +63,7 @@ class TeachersController < ApplicationController
     me = params[:subject_ids]
     @subject = Subject.find(me)
 
-      @teacher.update(subjects: @subject)
-
+    @teacher.update(subjects: @subject)
   end
 
   # PATCH/PUT /teachers/1
@@ -90,7 +81,7 @@ class TeachersController < ApplicationController
     me = params[:subject_ids]
     @subject = Subject.find(me)
 
-      @teacher.update(subjects: @subject)
+    @teacher.update(subjects: @subject)
   end
 
   # DELETE /teachers/1
@@ -106,13 +97,14 @@ class TeachersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_teacher
-      @teacher = Teacher.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def teacher_params
-      params.require(:teacher).permit(:name, :role, :picture, teacher_attachments_attributes: [:id, :teacher_id, :avatar], :stream_ids => [], :subject_ids => [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def teacher_params
+    params.require(:teacher).permit(:name, :role, :picture, teacher_attachments_attributes: %i[id teacher_id avatar], stream_ids: [], subject_ids: [])
+  end
 end
