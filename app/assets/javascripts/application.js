@@ -15,6 +15,7 @@
 //= require_tree .
 //= require toastr
 //= require jquery
+//= require chartkick
 $(document).ready(function() {
             var sideslider = $('[data-toggle=collapse-side]');
             var sel = sideslider.attr('data-target');
