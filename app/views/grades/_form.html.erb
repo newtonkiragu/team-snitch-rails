@@ -1,51 +1,58 @@
-<%= form_for [@student, @grade] do |form| %>
-<% if @grade.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(grade.errors.count, "error") %>
-    prohibited this grade from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_for [@student, @grade] do |form| %>
+      <% if @grade.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(grade.errors.count, "error") %>
+          prohibited this grade from being saved:</h2>
 
-  <ul>
-    <% grade.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+        <ul>
+          <% grade.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+
+          <td><%= collection_select(:grade, :exam_id, @exams, :id, :name) %></td>
+
+
+
+
+            <td><%= collection_select(:grade, :subject_id, @subjects, :id, :name) %></td>
+
+
+
+            <td><%= form.number_field :cat1, id: :grade_cat1 %></td>
+
+
+
+
+            <td><%= form.number_field :cat2, id: :grade_cat2 %></td>
+
+
+
+
+            <td><%= form.number_field :cat3, id: :grade_cat3 %></td>
+
+
+
+
+            <td><%= form.number_field :score, id: :grade_score %></td>
+
+
+
+
+            <td><%= form.text_field :grade, id: :grade_grade %></td>
+
+
+
+        <td><%= form.submit %></td>
+
+      <% end %>
+
+    </div>
+  </div>
 </div>
-<% end %>
-
-
-    <td><%= collection_select(:grade, :exam_id, @exams, :id, :name) %></td>
-
-
-
-
-      <td><%= collection_select(:grade, :subject_id, @subjects, :id, :name) %></td>
-
-
-
-      <td><%= form.number_field :cat1, id: :grade_cat1 %></td>
-
-
-
-
-      <td><%= form.number_field :cat2, id: :grade_cat2 %></td>
-
-
-
-
-      <td><%= form.number_field :cat3, id: :grade_cat3 %></td>
-
-
-
-
-      <td><%= form.number_field :score, id: :grade_score %></td>
-
-
-
-
-      <td><%= form.text_field :grade, id: :grade_grade %></td>
-
-
-
-  <td><%= form.submit %></td>
-
-<% end %>
