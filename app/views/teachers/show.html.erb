@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 left">
       <%= image_tag @teacher.picture_url.to_s, class:"img-thumbnail img-responsive"%>
       <hr>
       <h3>Logged in as:
@@ -10,12 +10,12 @@
             <%= @teacher.role %></h5>
     </div>
     <div class="col-md-9">
-      <div class="container-fluid">
+      <div class="container-fluid juu">
         <div class="timetable">
           <img src="http://ac-grenoble.fr/college/grand-champ.pont-de-cheruy/lgc/IMG/png/planning.png?1454837894" class="img-responsive img-thumbnail" alt="" style="width:80%, height:60%">
         </div>
         <hr>
-        <div class="container">
+        <div class="container right">
           <ul class="nav nav-tabs">
             <li class="active">
               <a data-toggle="tab" href="#students">View students</a>
