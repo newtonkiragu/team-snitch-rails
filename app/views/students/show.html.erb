@@ -3,69 +3,91 @@
 <div class="container-fluid">
   <div class="row">
 
+    <div class="col-md-3">
+      <div class="divider"></div>
 
-  <div class="col-md-4">
-    <p>
-      <strong>
-        Student Picture:</strong><br>
+      <div class="student_pic">
+        <strong>Student Picture:</strong><br>
 
-      <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive", alt:"...", style:"width:30%; height:50%"%>
+        <%= image_tag @student.picture_url.to_s, class:"img-thumbnail img-responsive"%>
 
-    </p>
-    <h4 class="text-success">Name:
-      <%= @student.name%></h4>
-    <br>
-    <h4 class="text-success">Level:
-      <%= @student.stream.level.level%></h4>
-    <br>
-    <h4 class="text-success">Stream:
-      <%= @student.stream.stream%></h4>
-    <br>
-    <h4 class="text-success">Fee:
-      <%= @student.fee%></h4>
-    <br>
-    <h4 class="text-success">Dormitory:
-      <%= @student.dormitory%></h4>
-    <br>
-    <h4 class="text-success">Clubs:
-      <%= @student.clubs%></h4>
-    <br>
-    <h4 class='text-success'>
-      Subject Names:
-      <%= @student.subjects.map {|c| c.name}.join(', ') %></h4>
+      </div>
 
+      <div class="student_info">
+
+        <h4 class="text-success">Name:
+          <%= @student.name%></h4>
+        <br>
+        <h4 class="text-success">Level:
+          <%= @student.stream.level.level%></h4>
+        <br>
+        <h4 class="text-success">Stream:
+          <%= @student.stream.stream%></h4>
+        <br>
+        <h4 class="text-success">Fee:
+          <%= @student.fee%></h4>
+        <br>
+        <h4 class="text-success">Dormitory:
+          <%= @student.dormitory%></h4>
+        <br>
+        <h4 class="text-success">Clubs:
+          <%= @student.clubs%></h4>
+        <br>
+        <h4 class='text-success'>
+          Subject Names:<br>
+          <%= @student.subjects.map {|c| c.name}.join(', ') %></h4>
+
+      </div>
+
+    </div>
+
+      <div class="col-md-9">
+        <div class="content_right">
+          <div class="student_ass">
+            <h2>Assignments</h2>
+            <% @assignments.each do |assignment|%>
+            <ol>
+
+            <li>
+            <p>Subject:</p>
+            <h4><strong><%= assignment.subject.name%></strong></h4><br>
+            <p>Details:</p>
+            <h4><%= assignment.assignment_details%></h4>
+            <p>Due Date:</p>
+            <h4><%= assignment.due_date%></h4>
+            </li>
+          </ol>
+          <br>
+
+            <% end %>
+
+          </div>
+
+          <div class="fee_chart">
+            <h3>Fee Representation:</h3>
+            <%= pie_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+            <br>
+            <br>
+            <p>Total Fee Balance:</p>
+            <br>
+            <p>Overpaid Fee:</p>
+
+          </div>
+      </div>
+    </div>
   </div>
-
-  <div class="col-md-4">
-    <h3>Assignments</h3>
-    <% @assignments.each do |assignment|%>
-    <h4><%= assignment.subject%></h4><br>
-    <h4><%= assignment.assignment_details%></h4>
-    <h4><%= assignment.due_date%></h4>
-    <% end %>
-
-
-  </div>
-
-
-
-
-
-<div class="col-md-4">
-  <h3>Fee Representation:</h3>
-  <%= pie_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
-
-
-</div>
-</div>
 </div>
 
 <br>
 
-
 <div class="mgt">
-<%= link_to 'View Grades', student_grades_path(@student), class: 'btn btn-danger'%>
-<%= link_to 'Edit', edit_student_path(@student) %>
-|
-<%= link_to 'Back', students_path %>
+
+  <div class="mgt1">
+    <%= link_to 'View Grades', student_grades_path(@student), class: 'btn btn-success'%>
+  </div>
+  <br>
+  <br>
+  <%= link_to 'Edit', edit_student_path(@student) %>
+  |
+  <%= link_to 'Back', students_path %>
 </div>
