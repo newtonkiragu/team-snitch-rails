@@ -4,14 +4,10 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-<<<<<<< HEAD
+
 gem 'will_paginate'
 gem 'groupdate', '~> 2.4'
 gem "chartkick"
-=======
-gem 'chartkick'
-gem 'africastalking-ruby'
->>>>>>> 89edef5ad73a2e605f000787ea54d2432b952b1a
 gem 'mini_magick', '~> 4.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'

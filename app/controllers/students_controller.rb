@@ -10,15 +10,11 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-<<<<<<< HEAD
     @assignments=Assignment.where(level_id: @student.stream.level.id)
     @student = Student.find(params[:id])
     @student.grades.each do |grade|
       @x = grade.exam
     end
-=======
-    @assignments = Assignment.where(level_id: @student.stream.level.id)
->>>>>>> 89edef5ad73a2e605f000787ea54d2432b952b1a
   end
 
   # GET /students/new
