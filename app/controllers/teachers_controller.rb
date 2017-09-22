@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery except: :index
   # GET /teachers
   # GET /teachers.json
   def index
@@ -12,7 +12,31 @@ class TeachersController < ApplicationController
   def show
     @teacher =  Teacher.find(params[:id])
     @teacher_attachments = @teacher.teacher_attachments.all
+    @subjects = @teacher.subjects
+    @subject = @subjects.each do |subject|
+      subject.id
+    end
+    @teacher.streams.each do |stream|
+      stream.level.level
+      stream.stream
 
+      stream.students.each do |student|
+      student.subjects.each do |s|
+      if @subject.each do |s1|
+      if s1.id == s.id
+
+      @studo = student.name
+      end
+      end
+      end
+      end
+      end
+    end
+    @student = Student.find_by name: @studo
+    @subjects = @student.subjects
+    @exams = Exam.all
+    @grade = @student.grades.new
+    @assignment = Assignment.new
   end
 
   # GET /teachers/new
@@ -89,6 +113,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name, :role, :picture, teacher_attachments_attributes: [:id, :teacher_id, :avatar])
+      params.require(:teacher).permit(:name, :role, :picture, teacher_attachments_attributes: [:id, :teacher_id, :avatar], :stream_ids => [], :subject_ids => [])
     end
 end

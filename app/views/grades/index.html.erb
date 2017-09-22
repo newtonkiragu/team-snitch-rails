@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Exam</th>
       <th>Subject</th>
       <th>Score</th>
       <th>Grade</th>
@@ -15,7 +16,11 @@
   <tbody>
     <% @student.grades.each do |grade| %>
       <tr>
+        <td><%= grade.exam.name %></td>
         <td><%= grade.subject.name %></td>
+        <td><%= grade.cat1%></td>
+        <td><%= grade.cat2%></td>
+        <td><%= grade.cat3%></td>
         <td><%= grade.score %></td>
         <td><%= grade.grade %></td>
         <td><%= link_to 'Show', student_grade_path(@student.id, grade.id) %></td>

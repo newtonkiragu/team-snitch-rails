@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exams
   resources :levels
   root to: 'schools#index'
   resources :streams
