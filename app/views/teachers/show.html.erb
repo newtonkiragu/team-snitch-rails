@@ -42,6 +42,20 @@
             <li>
               <a data-toggle="tab" href="#assignments">Add assignments</a>
             </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">View Grades
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#<%= @teacher.subjects[0].name%>" data-toggle="tab"><%= @teacher.subjects[0].name%></a>
+                </li>
+                <li>
+                  <a href="#<%= @teacher.subjects[1].name%>" data-toggle="tab"><%= @teacher.subjects[1].name%></a>
+                </li>
+              </ul>
+              <!-- end of dropdown menu -->
+            </li>
           </ul>
 
           <div class="tab-content">
@@ -109,17 +123,23 @@
 
                 <tbody>
 
-                    <% @studo.each do |x|%>
-                    <tr>
+                  <% @studo.each do |x|%>
+                  <tr>
                     <td><%= x %></td>
-                  <%= render 'grades/form'%>
-                </tr>
+                    <%= render 'grades/form'%>
+                  </tr>
                   <% end %>
                 </tbody>
               </table>
             </div>
             <div id="assignments" class="tab-pane fade">
               <%= render 'assignments/form'%>
+            </div>
+            <div class="tab-pane" id="<%= @teacher.subjects[0].name%>">
+              <p>Please just</p>
+            </div>
+            <div class="tab-pane" id="<%= @teacher.subjects[1].name%>">
+              <p>WORK!</p>
             </div>
           </div>
 
