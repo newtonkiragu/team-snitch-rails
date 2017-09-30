@@ -1,10 +1,13 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
   protect_from_forgery except: :index
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:index, :show]
   # GET /students
   # GET /students.json
   def index
     @students = Student.all
+    @parents = Parent.all
   end
 
   # GET /students/1
