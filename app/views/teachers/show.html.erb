@@ -136,10 +136,72 @@
               <%= render 'assignments/form'%>
             </div>
             <div class="tab-pane" id="<%= @teacher.subjects[0].name%>">
-              <p>Please just</p>
+              <h3><%= @teacher.subjects[0].name%></h3>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>cat 1</th>
+                    <th>cat 2</th>
+                    <th>cat 3</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+
+                    <% @studz.each do |v|%>
+                    <td><%= v.name%></td>
+                    <% v.grades.where(subject_id:  @teacher.subjects[0].id).each do |grade|%>
+                    <td><%= grade.cat1%></td>
+                    <td><%= grade.cat2%></td>
+                    <td><%= grade.cat3%></td>
+                    <td><%= grade.score%></td>
+                    <td><%= grade.grade%></td>
+                    <% end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
             <div class="tab-pane" id="<%= @teacher.subjects[1].name%>">
-              <p>WORK!</p>
+              <h3><%= @teacher.subjects[1].name%></h3>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>cat 1</th>
+                    <th>cat 2</th>
+                    <th>cat 3</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+
+                    <% @studz.each do |v|%>
+                    <% v.subjects.each do |c|%>
+                    <% if c.id == @teacher.subjects[1].id%>
+                    <td><%= v.name%></td>
+                    <% end %>
+                    <% end %>
+                    <% v.grades.where(subject_id:  @teacher.subjects[1].id).each do |grade|%>
+                    <td><%= grade.cat1%></td>
+                    <td><%= grade.cat2%></td>
+                    <td><%= grade.cat3%></td>
+                    <td><%= grade.score%></td>
+                    <td><%= grade.grade%></td>
+                    <% end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
 
