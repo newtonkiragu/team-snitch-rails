@@ -31,6 +31,10 @@ class TeachersController < ApplicationController
     @exams = Exam.all
     @grade = @student.grades.new
     @assignment = Assignment.new
+    @exam = []
+    @exams.each do |exam|
+      @exam.push(exam)
+    end
   end
 
   # GET /teachers/new

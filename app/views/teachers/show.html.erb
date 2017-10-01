@@ -47,8 +47,13 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <a href="#<%= @teacher.subjects[0].name%>" data-toggle="tab"><%= @teacher.subjects[0].name%></a>
+                <li class="dropdown-submenu">
+                  <a class="test" href=""><%= @teacher.subjects[0].name%><span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#msee" data-toggle="tab"><%= @exam[0].name%></a></li>
+                    <li><a tabindex="-1" href="#ule" data-toggle="tab"><%= @exam[1].name%></a></li>
+                    <li><a tabindex="-1" href="#<%= @exam[2].name%>" data-toggle="tab"><%= @exam[2].name%></a></li>
+                  </ul>
                 </li>
                 <li>
                   <a href="#<%= @teacher.subjects[1].name%>" data-toggle="tab"><%= @teacher.subjects[1].name%></a>
@@ -142,11 +147,11 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>cat 1</th>
-                    <th>cat 2</th>
-                    <th>cat 3</th>
-                    <th>Score</th>
-                    <th>Grade</th>
+                    <th><%= sortable "cat 1"%></th>
+                    <th><%= sortable "cat 2"%></th>
+                    <th><%= sortable "cat 3"%></th>
+                    <th><%= sortable "Score"%></th>
+                    <th><%= sortable "Grade"%></th>
                   </tr>
                 </thead>
 
@@ -155,7 +160,73 @@
 
                     <% @studz.each do |v|%>
                     <td><%= v.name%></td>
-                    <% v.grades.where(subject_id:  @teacher.subjects[0].id).each do |grade|%>
+                    <% v.grades.where(subject_id:  @teacher.subjects[0].id, exam_id: @exam[0].id).each do |grade|%>
+                    <td><%= grade.cat1%></td>
+                    <td><%= grade.cat2%></td>
+                    <td><%= grade.cat3%></td>
+                    <td><%= grade.score%></td>
+                    <td><%= grade.grade%></td>
+                    <% end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane" id="msee">
+              <h3><%= @teacher.subjects[0].name%></h3>
+              <hr>
+              <h3><%= @exam[0].name%></h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th><%= sortable "cat 1"%></th>
+                    <th><%= sortable "cat 2"%></th>
+                    <th><%= sortable "cat 3"%></th>
+                    <th><%= sortable "Score"%></th>
+                    <th><%= sortable "Grade"%></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+
+                    <% @studz.each do |v|%>
+                    <td><%= v.name%></td>
+                    <% v.grades.where(subject_id:  @teacher.subjects[0].id, exam_id: @exam[1].id).each do |grade|%>
+                    <td><%= grade.cat1%></td>
+                    <td><%= grade.cat2%></td>
+                    <td><%= grade.cat3%></td>
+                    <td><%= grade.score%></td>
+                    <td><%= grade.grade%></td>
+                    <% end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane" id="ule">
+              <h3><%= @teacher.subjects[0].name%></h3>
+              <hr>
+              <h3><%= @exam[0].name%></h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th><%= sortable "cat 1"%></th>
+                    <th><%= sortable "cat 2"%></th>
+                    <th><%= sortable "cat 3"%></th>
+                    <th><%= sortable "Score"%></th>
+                    <th><%= sortable "Grade"%></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+
+                    <% @studz.each do |v|%>
+                    <td><%= v.name%></td>
+                    <% v.grades.where(subject_id:  @teacher.subjects[0].id, exam_id: @exam[2].id).each do |grade|%>
                     <td><%= grade.cat1%></td>
                     <td><%= grade.cat2%></td>
                     <td><%= grade.cat3%></td>
@@ -170,6 +241,7 @@
             <div class="tab-pane" id="<%= @teacher.subjects[1].name%>">
               <h3><%= @teacher.subjects[1].name%></h3>
               <hr>
+              <h3><%= @exam[1].name%></h3>
               <table class="table">
                 <thead>
                   <tr>
@@ -210,3 +282,12 @@
     </div>
   </div>
 </div>
+  <script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
