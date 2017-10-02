@@ -1,16 +1,310 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="stat_img">
+      <p id="notice"><%= notice %></p>
+      <% @schools.each do |school| %>
+      <!-- <img src=" <%= school.picture %>" alt="" style="height:300px;"> -->
+      <h1><%= school.name %></h1>
+      <% end %>
+      <div class="state">
+        <h1>Find Your place here</h1>
+        <h4>From pair programming to the flipped classrooms, and across the globe: At Moringa School, your horizons are limitless.</h4>
 
-<div class="container">
-
-  <% @schools.each do |school| %>
-  <div class="head" style="text-align:center">
-
-    <img src=" <%= school.picture %>" alt="" style="height:300px;">
-    <br>
-    <br>
-    <h1 style="text-align:center;"><%= school.name %></h1>
+        <p>
+          <button type="button" class="btn btn-success">
+            <h5>Plan a visit</h5>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <h5>Take a video tour</h5>
+          </button>
+        </p>
+      </div>
+    </div>
   </div>
-  <% end %>
+
+  <div class="row">
+    <div class="news_calendar">
+
+      <div class="col-md-6">
+        <h2>News</h2>
+        <a href="#">
+          <p>Moringa Core3 Joins the Alumni Team after graduating in a beautiful ceremony held at the institution last friday</p>
+        </a>
+        <p>Campus News</p>
+        <br>
+        <a href="#">
+          <p>Moringa School Featured on best tech schools around Nairobi</p>
+        </a>
+        <p>Campus News</p>
+        <br>
+        <a href="#">
+          <p>See Moringa Core3 reaction at the graduation ceremony held last friday.</p>
+        </a>
+        <p>Campus News</p>
+        <br>
+        <div class="custom_bttn">
+          <button type="button" class="btn btn-primary">News Room</button>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Upcoming</h2>
+        <a href="#">
+          <p>Moringa school Basketball Team vs Moringa Staff & all Alumni, best of the best!
+          </p>
+        </a>
+        <p>5:45 PM • Kenya's Ngong Course; Ngong Road, Wash.</p>
+        <br>
+        <a href="#">
+          <p>Moringa school Basketball Team vs Moringa Staff & all Alumni, best of the best!
+          </p>
+        </a>
+        <p>5:45 PM • Kenya's Ngong Course; Ngong Road, Wash.</p>
+
+        <a href="#">
+          <p>Moringa school Basketball Team vs Moringa Staff & all Alumni, best of the best!
+          </p>
+        </a>
+        <p>5:45 PM • Kenya's Ngong Course; Ngong Road, Wash.</p>
+        <div class="custom_bttn">
+          <button type="button" class="btn btn-primary">More Events</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr class="h_rule">
+  <div class="row">
+    <div class="ceo">
+      <div class="col-md-3">
+        <div class="veterinarian_thumb">
+
+          <%= image_tag "veterinarian.jpeg", class: "paul-img img-circle img-responsive"%>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="veterinarian_opinion">
+          <h1>ON THE FUTURE OF PROGRAMMING</h1>
+          <p>From School Magazine: As chief veterinary officer at the Food and Agriculture Organization of the United Nations,
+            <strong>Juan Lubroth '79</strong>
+            subscribes to a view of medicine known as "one world, one health."He stresses that human, animal and environmental health are all inextricably linked—something humans are not always good at remembering.</p>
+          <br>
+          <button type="button" class="btn btn-primary">
+            <h5>Read the full story</h5>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr class="h_rule">
+  <div class="row">
+    <div class="ceo1">
+      <div class="col-md-8">
+        <div class="dormitory_info">
+          <h1>BUILDING A RESIDENTIAL FUTURE</h1>
+          <p>From Moringa Magazine: What will residence life be like for future Moringa Hackers? Here's how the new Living at Moringa Initiative will bring a new sophomore residence hall and dining facilities to life, in the biggest change to campus in decades.
+          </p>
+
+          <br>
+          <button type="button" class="btn btn-primary">
+            <h5>Read the full story</h5>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="dormitory_thumb">
+
+          <%= image_tag "dormitory.jpg", class: "paul-img img-circle img-responsive"%>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <hr class="h_rule">
+  <div class="row">
+    <div class="ceo1">
+      <div class="col-md-3">
+        <div class="veterinarian_thumb">
+
+          <%= image_tag "athletics.jpeg", class: "paul-img img-circle img-responsive"%>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="veterinarian_opinion">
+          <h1>ATHLETICS NEWS</h1>
+          Moringa School competes in Division III of the NCAA Northwest Conference in seven men's and eight women's athletic programs. Visit the Moringa Athletics website for news and information about Moringa's varsity athletics program. Recent headlines:
+          <br>
+          <a href="#">2nd–game rally spurs Blue to victory</a>
+          <br>
+          <a href="#">Blues open up 22-stroke lead</a>
+          <br>
+          <a href="#">Chance for sweep at ITAs</a>
+          <br>
+          <br>
+          <button type="button" class="btn btn-primary">
+            <h5>Moringa School Athletics</h5>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr class="h_rule">
+  <div class="row">
+    <div class="schook">
+      <div class="col-md-4">
+        <a href="#">
+          <h1>VISIT</h1>
+          <h3>OUR CAMPUS</h3>
+        </a>
+
+      </div>
+
+      <div class="col-md-4">
+        <div class="divider"></div>
+        <a href="#">
+          <h1>APPLY</h1>
+          <h3>FOR ADMISSION</h3>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <div class="divider"></div>
+        <a href="#">
+          <h1>GIVE</h1>
+          <h3>TO MORINGA</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="custom_footr">
+      <div class="col-md-2">
+        <h4>About</h4>
+        <hr>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+      </div>
+
+      <div class="col-md-2">
+        <h4>Academics</h4>
+        <hr>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+      </div>
+
+      <div class="col-md-2">
+        <h4>Admission & Aid</h4>
+        <hr>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+      </div>
+
+      <div class="col-md-2">
+        <h4>Student Life</h4>
+        <hr>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+      </div>
+      <div class="col-md-2">
+        <h4>Quick Links</h4>
+        <hr>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+      </div>
+      <div class="col-md-2">
+        <h4>Activities</h4>
+        <hr>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+        <br>
+        <a href="#">Activities</a>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
 
 <!-- <h1>My School</h1>
