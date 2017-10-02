@@ -1,0 +1,25 @@
+
+<table>
+<tbody>
+  <% @mwanafunzi.students.each do |student| %>
+    <tr>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.stream.level.level %></td>
+        <td><%= student.stream.stream %></td>
+        <td><%= student.fee %></td>
+        <td><%= student.dormitory %></td>
+        <td><%= student.clubs %></td>
+
+
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', student %></td>
+      <td><%= link_to 'Edit', edit_student_path(student) %></td>
+      <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<li><%= link_to "Sign Out", destroy_mwanafunzi_session_path,  :method => :delete %></li>

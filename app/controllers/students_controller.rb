@@ -31,11 +31,12 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(student_params)
+    @mwanafunzi = current_mwanafunzi
+    @student = @mwanafunzi.students.new(student_params)
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to mwanafunzi_path(@mwanafunzi), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -77,6 +78,6 @@ class StudentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def student_params
-    params.require(:student).permit(:name, :fee, :dormitory, :clubs, :picture, :stream_id, subject_ids: [])
+    params.require(:student).permit(:mwanafunzi_id, :name, :fee, :dormitory, :clubs, :picture, :stream_id, subject_ids: [])
   end
 end

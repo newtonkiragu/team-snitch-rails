@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919125729) do
+ActiveRecord::Schema.define(version: 20171001225010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20170919125729) do
     t.datetime "due_date"
     t.string "extra_resources"
     t.integer "level_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "school_id"
+    t.string "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_documents_on_school_id"
   end
 
   create_table "exams", force: :cascade do |t|
@@ -39,10 +47,10 @@ ActiveRecord::Schema.define(version: 20170919125729) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exam_id"
     t.integer "cat1"
     t.integer "cat2"
     t.integer "cat3"
-    t.integer "exam_id"
   end
 
   create_table "levels", force: :cascade do |t|
@@ -133,6 +141,7 @@ ActiveRecord::Schema.define(version: 20170919125729) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.integer "stream_id"
+    t.integer "mwanafunzi_id"
   end
 
   create_table "students_subjects", id: false, force: :cascade do |t|
@@ -188,5 +197,6 @@ ActiveRecord::Schema.define(version: 20170919125729) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
 end
