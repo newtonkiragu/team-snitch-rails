@@ -1,6 +1,7 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[show edit update destroy]
   protect_from_forgery except: :index
+  helper_method :sort_column, :sort_direction
   # GET /teachers
   # GET /teachers.json
   def index
@@ -113,5 +114,13 @@ class TeachersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def teacher_params
     params.require(:teacher).permit(:user_id, :name, :role, :picture, teacher_attachments_attributes: %i[id teacher_id avatar], stream_ids: [], subject_ids: [])
+  end
+
+  def sort_column
+    params[:sort] || "name"
+  end
+
+  def sort_direction
+    params[:directions] || "asc"
   end
 end
