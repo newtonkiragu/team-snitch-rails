@@ -1,4 +1,5 @@
 class Teacher < ApplicationRecord
+  belongs_to :user
   has_and_belongs_to_many :subjects
   mount_uploader :picture, PictureUploader
   has_many :teacher_attachments
