@@ -10,16 +10,21 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require turbolinks
 //= require Chart.bundle
 //=require chartkick
+//= require jquery
+//= require rails-ujs
+//= require turbolinks
+//= require bootstrap
 //= require_tree .
 //= require toastr
+<<<<<<< HEAD
 //= require chartkick
 //= require Chart.bundle
 //= require jquery
 //= require chartkick
+=======
+>>>>>>> d60876ad1e95a41c93f75ad6a6a6b2d25a1a4d09
 $(document).ready(function() {
   var sideslider = $('[data-toggle=collapse-side]');
   var sel = sideslider.attr('data-target');

@@ -11,6 +11,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1.json
   def show
     @studo = []
+    @studz = []
     @teacher =  Teacher.find(params[:id])
     @teacher_attachments = @teacher.teacher_attachments.all
     @subjects = @teacher.subjects
@@ -20,6 +21,7 @@ class TeachersController < ApplicationController
         student.subjects.each do |s|
           @subjects.each do |s1|
             @studo.push(student.name) if s1.id == s.id
+            @studz.push(student) if s1.id == s.id
           end
         end
       end
@@ -29,6 +31,10 @@ class TeachersController < ApplicationController
     @exams = Exam.all
     @grade = @student.grades.new
     @assignment = Assignment.new
+    @exam = []
+    @exams.each do |exam|
+      @exam.push(exam)
+    end
   end
 
   # GET /teachers/new

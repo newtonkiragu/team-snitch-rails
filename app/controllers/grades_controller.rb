@@ -6,6 +6,13 @@ class GradesController < ApplicationController
   # GET /grades.json
   def index
     @exams = Exam.all
+    @teo = []
+    @exam = []
+    @exams.each do |exam|
+      @te = exam
+      @teo.push(@te)
+      @exam.push(exam.id)
+    end
     @student = Student.find(params[:student_id])
     @grades = Grade.all
   end

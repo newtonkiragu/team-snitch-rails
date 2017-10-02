@@ -7,33 +7,105 @@
 
       <p><%= @student.name%></p>
 
+      <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#<%= @exam[0]%>"><%= @teo[0].name%></a></li>
+          <li><a data-toggle="tab" href="#<%= @exam[1]%>"><%= @teo[1].name%></a></li>
+          <li><a data-toggle="tab" href="#<%= @exam[2]%>"><%= @teo[2].name%></a></a></li>
+        </ul>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>cat 1</th>
-          <th>cat 2</th>
-          <th>cat 3</th>
-          <th>Score</th>
-          <th>Grade</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+        <div class="tab-content">
+          <div id="<%= @exam[0]%>" class="tab-pane fade in active">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>cat 1</th>
+                  <th>cat 2</th>
+                  <th>cat 3</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <% @student.grades.where(exam_id: @exam[0]).each do |grade| %>
+              <tr>
 
-      <% @student.grades.each do |grade| %>
-      <tr>
+                <td><%= grade.subject.name %></td>
+                <td><%= grade.cat1%></td>
+                <td><%= grade.cat2%></td>
+                <td><%= grade.cat3%></td>
+                <td><%= grade.score %></td>
+                <td><%= grade.grade %></td>
+                <td><%= link_to 'Show', student_grade_path(@student.id, grade.id) %></td>
+                <td><%= link_to 'Edit', edit_student_grade_path(@student.id, grade.id) %></td>
+                <td><%= link_to 'Delete', student_grade_path(@student.id , grade.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <% end %>
 
-        <td><%= grade.subject.name %></td>
-        <td><%= grade.score %></td>
-        <td><%= grade.grade %></td>
-        <td><%= link_to 'Show', student_grade_path(@student.id, grade.id) %></td>
-        <td><%= link_to 'Edit', edit_student_grade_path(@student.id, grade.id) %></td>
-        <td><%= link_to 'Delete', student_grade_path(@student.id , grade.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
+            </table>
+          </div>
+          <div id="<%= @exam[1]%>" class="tab-pane fade">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>cat 1</th>
+                  <th>cat 2</th>
+                  <th>cat 3</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <% @student.grades.where(exam_id: @exam[1]).each do |grade| %>
+              <tr>
 
-    </table>
+                <td><%= grade.subject.name %></td>
+                <td><%= grade.cat1%></td>
+                <td><%= grade.cat2%></td>
+                <td><%= grade.cat3%></td>
+                <td><%= grade.score %></td>
+                <td><%= grade.grade %></td>
+                <td><%= link_to 'Show', student_grade_path(@student.id, grade.id) %></td>
+                <td><%= link_to 'Edit', edit_student_grade_path(@student.id, grade.id) %></td>
+                <td><%= link_to 'Delete', student_grade_path(@student.id , grade.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <% end %>
+
+            </table>
+          </div>
+          <div id="<%= @exam[2]%>" class="tab-pane fade">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>cat 1</th>
+                  <th>cat 2</th>
+                  <th>cat 3</th>
+                  <th>Score</th>
+                  <th>Grade</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <% @student.grades.where(exam_id: @exam[2]).each do |grade| %>
+              <tr>
+
+                <td><%= grade.subject.name %></td>
+                <td><%= grade.cat1%></td>
+                <td><%= grade.cat2%></td>
+                <td><%= grade.cat3%></td>
+                <td><%= grade.score %></td>
+                <td><%= grade.grade %></td>
+                <td><%= link_to 'Show', student_grade_path(@student.id, grade.id) %></td>
+                <td><%= link_to 'Edit', edit_student_grade_path(@student.id, grade.id) %></td>
+                <td><%= link_to 'Delete', student_grade_path(@student.id , grade.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <% end %>
+
+            </table>
+          </div>
+        </div>
+
   </div>
 
   <hr>
@@ -42,7 +114,20 @@
   <div class="container">
     <div class="student_analytics">
 <h3>Column Graph</h3>
-      <%= column_chart @student.grades.joins(:subject).group(:name).sum(:score)%>
+      <div class="row">
+        <div class="col-md-12">
+          <h3><%= @teo[0].name%></h3>
+          <%= column_chart @student.grades.where(exam_id: @exam[0]).joins(:subject).group(:name).sum(:score)%>
+        </div>
+        <div class="col-md-12">
+          <h3><%= @teo[1].name%></h3>
+            <%= column_chart @student.grades.where(exam_id: @exam[1]).joins(:subject).group(:name).sum(:score)%>
+        </div>
+        <div class="col-md-12">
+          <h3><%= @teo[2].name%></h3>
+            <%= column_chart @student.grades.where(exam_id: @exam[2]).joins(:subject).group(:name).sum(:score)%>
+        </div>
+      </div>
 
       <br>
 <h3>Pie Chart</h3>

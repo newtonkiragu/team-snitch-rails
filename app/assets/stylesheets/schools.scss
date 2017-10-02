@@ -4,7 +4,7 @@
 
 .stat_img {
   margin-top: -40px;
-  height: 550px;
+  height: 650px;
   background: url(school_img3.jpg)no-repeat center center fixed;
   text-align: center;
   background-size: cover;
@@ -14,8 +14,14 @@
 .state {
   text-align: center;
   color: white;
-  padding-top: 200px;
+  padding-top: 300px;
   padding-right: 650px;
+}
+
+.h_rule {
+  height: 1px;
+  background: #222222;
+  width: 70%;
 }
 
 .news_calendar {
@@ -67,13 +73,20 @@
 }
 
 .schook {
-  height: 200px;
+  height: 180px;
   padding-left: 70px;
   text-align: center;
 
   a:hover {
     color: #222222;
   }
+}
+
+.divider {
+  width: 2px;
+  float: left;
+  background: #6CB7E3;
+  height: 150px;
 }
 
 .custom_footr {
