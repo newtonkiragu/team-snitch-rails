@@ -7,7 +7,6 @@ end
 gem "bootstrap-sass-rails", "~> 2.2.2.0"
 gem 'will_paginate'
 gem 'groupdate', '~> 2.4'
-gem "chartkick"
 gem 'mini_magick', '~> 4.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
