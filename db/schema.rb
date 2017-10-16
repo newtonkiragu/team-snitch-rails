@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 20171002055059) do
     t.integer "level_id"
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.bigint "school_id"
-    t.string "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_documents_on_school_id"
-  end
-
   create_table "exams", force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -47,10 +39,10 @@ ActiveRecord::Schema.define(version: 20171002055059) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "exam_id"
     t.integer "cat1"
     t.integer "cat2"
     t.integer "cat3"
+    t.integer "exam_id"
   end
 
   create_table "levels", force: :cascade do |t|
@@ -198,6 +190,5 @@ ActiveRecord::Schema.define(version: 20171002055059) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "documents", "schools"
   add_foreign_key "parents", "students"
 end
